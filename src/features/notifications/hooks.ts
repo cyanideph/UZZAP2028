@@ -6,7 +6,7 @@ import {supabase} from "@/lib/supabase";
 
 export function useNotifications(){
   const qc=useQueryClient();
-  const query=useQuery({queryKey:["notifications"],queryFn:listNotifications,staleTime:10_000,refetchOnReconnect:true});
+  const query=useQuery({queryKey:["notifications"],queryFn:()=>listNotifications(),staleTime:10_000,refetchOnReconnect:true});
   useEffect(()=>{
     let active=true;
     let channel:RealtimeChannel|undefined;
@@ -30,7 +30,7 @@ export function useNotifications(){
 export function useMarkNotificationRead(){
   const qc=useQueryClient();
   return useMutation({
-    mutationFn:markNotificationRead,
+    mutationFn:(id)=>markNotificationRead(id),
     onMutate:async id=>{
       await qc.cancelQueries({queryKey:["notifications"]});
       return {previous:qc.getQueryData(["notifications"])};
@@ -45,7 +45,7 @@ export function useMarkNotificationRead(){
 export function useMarkAllNotificationsRead(){
   const qc=useQueryClient();
   return useMutation({
-    mutationFn:markAllNotificationsRead,
+    mutationFn:()=>markAllNotificationsRead(),
     onMutate:async()=>{
       await qc.cancelQueries({queryKey:["notifications"]});
       return {previous:qc.getQueryData(["notifications"])};
@@ -58,13 +58,13 @@ export function useMarkAllNotificationsRead(){
 }
 
 export function useNotificationPreferences(){
-  return useQuery({queryKey:["notification-preferences"],queryFn:getNotificationPreferences,staleTime:60_000,refetchOnReconnect:true});
+  return useQuery({queryKey:["notification-preferences"],queryFn:()=>getNotificationPreferences(),staleTime:60_000,refetchOnReconnect:true});
 }
 
 export function useSetNotificationPreferences(){
   const qc=useQueryClient();
   return useMutation({
-    mutationFn:setNotificationPreferences,
+    mutationFn:(next)=>setNotificationPreferences(next),
     onMutate:async next=>{
       await qc.cancelQueries({queryKey:["notification-preferences"]});
       const previous=qc.getQueryData(["notification-preferences"]);

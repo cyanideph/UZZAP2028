@@ -1,5 +1,5 @@
 import { LayoutWrapper } from '@/components/ui/layout'
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import { ActivityIndicator, Text, View } from '@/tw'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'

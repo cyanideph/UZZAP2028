@@ -1,4 +1,4 @@
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import type { CreateTaskDto, Task, TaskFilter, UpdateTaskDto } from '@/types'
 
 // Explicit column selection for better performance (avoid SELECT *)

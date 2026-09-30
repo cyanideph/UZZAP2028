@@ -5,14 +5,17 @@ on:
     branches:
       - chore/prettier-format
 
+permissions:
+  contents: write
+
 jobs:
   format:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Check out
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Prepare
         uses: ./.github/composite-actions/prepare
@@ -23,13 +26,14 @@ jobs:
       - name: Verify
         run: pnpm run format:check
 
-      - name: Package formatted source
+      - name: Commit formatted files
         run: |
-          mkdir -p /tmp/uzzap2028-formatted
-          tar -czf /tmp/uzzap2028-formatted/source.tar.gz src __tests__
-
-      - name: Upload formatted source
-        uses: actions/upload-artifact@v4
-        with:
-          name: uzzap2028-prettier-formatted
-          path: /tmp/uzzap2028-formatted/source.tar.gz
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src __tests__
+          if git diff --cached --quiet; then
+            echo "No formatting changes."
+            exit 0
+          fi
+          git commit -m "style: format source files with prettier"
+          git push origin HEAD:chore/prettier-format

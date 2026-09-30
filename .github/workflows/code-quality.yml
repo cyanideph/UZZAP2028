@@ -24,6 +24,9 @@ jobs:
       - name: Run ExpoLint check
         run: pnpm run lint
 
+      - name: Run formatting check
+        run: pnpm run format:check
+
   type-check:
     name: Type Check
     runs-on: ubuntu-latest

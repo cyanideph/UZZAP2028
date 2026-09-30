@@ -23,7 +23,7 @@ export function ProfileHeaderSection({
   return (
     <View className={cn('items-center', className)}>
       <Pressable onPress={onEditAvatar} className="relative">
-        <Avatar src={avatarUrl} fallback={displayName ?? email} size="xl" />
+        <Avatar src={avatarUrl} fallback={displayName ?? email} size={88} />
         <View className="absolute bottom-0 right-0 bg-primary rounded-full p-2">
           <Text className="text-primary-foreground text-xs">📷</Text>
         </View>
@@ -39,7 +39,7 @@ export function ProfileHeaderSection({
       <Text className="text-base text-muted-foreground mt-1">{email}</Text>
 
       {isPremium && (
-        <Badge variant="warning" className="mt-3">
+        <Badge tone="warning">
           Premium Member
         </Badge>
       )}

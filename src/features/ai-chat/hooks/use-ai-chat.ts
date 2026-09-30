@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react'
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import type { Message, ChatState, CompletionRequest } from '@/types'
 
 const generateId = () => `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`

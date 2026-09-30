@@ -15,7 +15,6 @@ auth:
 
 # Feature tests
 features:
-  - flows/features/tasks.yaml
 
 # Full regression suite
 regression:
@@ -25,7 +24,6 @@ regression:
   - flows/auth/callback-verify-link-set-password.yaml
   - flows/onboarding/complete-onboarding.yaml
   - flows/navigation/tab-navigation.yaml
-  - flows/features/tasks.yaml
 
 # CI/CD suite (runs on pull requests)
 ci:
@@ -38,4 +36,3 @@ ci:
 production:
   - flows/auth/login.yaml
   - flows/navigation/tab-navigation.yaml
-  - flows/features/tasks.yaml

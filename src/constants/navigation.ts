@@ -58,7 +58,7 @@ export const TAB_ITEMS: TabItem[] = [
 ]
 
 export const DEEP_LINK_PREFIXES = [
-  'seaguntechexpotemplate://',
+  'uzzap2028://',
   'https://seaguntech.com',
   'https://*.seaguntech.com',
 ]

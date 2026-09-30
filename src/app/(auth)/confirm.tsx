@@ -45,7 +45,7 @@ export default function ConfirmEmailScreen() {
           if (redirect_to) {
             router.replace(redirect_to as Parameters<typeof router.replace>[0])
           } else {
-            router.replace('/(protected)/(tabs)')
+            router.replace('/(tabs)')
           }
         }, 2000)
       } catch (err) {

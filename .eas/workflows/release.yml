@@ -53,18 +53,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 9
-
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -72,7 +69,6 @@ jobs:
             node_modules
             ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - name: Run lint
         run: pnpm lint
 
@@ -83,18 +79,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 9
-
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -102,7 +95,6 @@ jobs:
             node_modules
             ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - name: Run type check
         run: pnpm check-types
 
@@ -113,18 +105,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 9
-
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -132,7 +121,6 @@ jobs:
             node_modules
             ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - name: Run tests with coverage
         run: pnpm test -- --coverage
 
@@ -146,7 +134,7 @@ jobs:
       profile: production
       cache:
         key: production-ios-${{ github.sha }}
-        custom_paths:
+        paths:
           - node_modules
           - ios/Pods
 
@@ -160,7 +148,7 @@ jobs:
       profile: production
       cache:
         key: production-android-${{ github.sha }}
-        custom_paths:
+        paths:
           - node_modules
           - android/.gradle
 

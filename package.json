@@ -14,7 +14,7 @@
     "lint": "expo lint",
     "lint:fix": "expo lint --fix",
     "format": "prettier --write \"src/app/**/*.{js,jsx,ts,tsx}\" \"src/**/*.{js,jsx,ts,tsx}\" \"__tests__/**/*.{js,jsx,ts,tsx}\"",
-    "format:check": "prettier --check \"src/app/**/*.{js,jsx,ts,tsx}\" \"src/**/*.{js,jsx,ts,tsx}\" __tests__/**/*.{js,jsx,ts,tsx}",
+    "format:check": "prettier --check \"src/app/**/*.{js,jsx,ts,tsx}\" \"src/**/*.{js,jsx,ts,tsx}\" \"__tests__/**/*.{js,jsx,ts,tsx}\"",
     "check-types": "tsc --noEmit",
     "prepare": "husky install",
     "postinstall": "patch-package",

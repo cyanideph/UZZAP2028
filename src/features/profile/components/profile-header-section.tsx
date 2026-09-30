@@ -38,11 +38,7 @@ export function ProfileHeaderSection({
 
       <Text className="text-base text-muted-foreground mt-1">{email}</Text>
 
-      {isPremium && (
-        <Badge tone="warning">
-          Premium Member
-        </Badge>
-      )}
+      {isPremium && <Badge tone="warning">Premium Member</Badge>}
     </View>
   )
 }

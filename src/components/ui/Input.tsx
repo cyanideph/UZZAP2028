@@ -28,9 +28,7 @@ export const Input = forwardRef<TextInput, TextInputProps & { error?: string; la
           ]}
         />
         {error && (
-          <Text style={{ marginTop: 5, color: theme.colors.danger, fontSize: 12 }}>
-            {error}
-          </Text>
+          <Text style={{ marginTop: 5, color: theme.colors.danger, fontSize: 12 }}>{error}</Text>
         )}
       </View>
     )

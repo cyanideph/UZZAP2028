@@ -1,1 +1,33 @@
-import {View} from "react-native"; import {Button} from "./Button"; export function MessageActions({onReply,onReport,onDelete,canDelete=false}:{onReply?:()=>void;onReport?:()=>void;onDelete?:()=>void;canDelete?:boolean}){return <View style={{flexDirection:"row",gap:8,flexWrap:"wrap"}}>{onReply&&<Button variant="ghost" onPress={onReply}>Reply</Button>}{onReport&&<Button variant="ghost" onPress={onReport}>Report</Button>}{canDelete&&onDelete&&<Button variant="danger" onPress={onDelete}>Delete</Button>}</View>}
+import { View } from 'react-native'
+import { Button } from './Button'
+export function MessageActions({
+  onReply,
+  onReport,
+  onDelete,
+  canDelete = false,
+}: {
+  onReply?: () => void
+  onReport?: () => void
+  onDelete?: () => void
+  canDelete?: boolean
+}) {
+  return (
+    <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
+      {onReply && (
+        <Button variant="ghost" onPress={onReply}>
+          Reply
+        </Button>
+      )}
+      {onReport && (
+        <Button variant="ghost" onPress={onReport}>
+          Report
+        </Button>
+      )}
+      {canDelete && onDelete && (
+        <Button variant="danger" onPress={onDelete}>
+          Delete
+        </Button>
+      )}
+    </View>
+  )
+}

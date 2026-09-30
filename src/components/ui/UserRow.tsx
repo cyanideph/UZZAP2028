@@ -1,2 +1,45 @@
-import {ReactNode} from "react"; import {Pressable} from "react-native"; import {View} from "react-native"; import {Avatar} from "./Avatar"; import {Text} from "./Text"; import {useTheme} from "../../theme";
-export function UserRow({name,username,avatar,online,right,onPress}:{name:string;username?:string;avatar?:string;online?:boolean;right?:ReactNode;onPress?:()=>void}){const {theme}=useTheme();const body=<View style={{minHeight:60,flexDirection:"row",alignItems:"center",gap:12}}><Avatar name={name} uri={avatar} size={46} online={online}/><View style={{flex:1}}><Text variant="body" style={{fontWeight:"700"}}>{name}</Text>{username&&<Text variant="caption">@{username}</Text>}</View>{right}</View>;return onPress?<Pressable onPress={onPress} style={({pressed})=>({borderRadius:theme.radius.md,opacity:pressed?.72:1})}>{body}</Pressable>:body;}
+import { ReactNode } from 'react'
+import { Pressable } from 'react-native'
+import { View } from 'react-native'
+import { Avatar } from './Avatar'
+import { Text } from './Text'
+import { useTheme } from '../../theme'
+export function UserRow({
+  name,
+  username,
+  avatar,
+  online,
+  right,
+  onPress,
+}: {
+  name: string
+  username?: string
+  avatar?: string
+  online?: boolean
+  right?: ReactNode
+  onPress?: () => void
+}) {
+  const { theme } = useTheme()
+  const body = (
+    <View style={{ minHeight: 60, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+      <Avatar name={name} uri={avatar} size={46} online={online} />
+      <View style={{ flex: 1 }}>
+        <Text variant="body" style={{ fontWeight: '700' }}>
+          {name}
+        </Text>
+        {username && <Text variant="caption">@{username}</Text>}
+      </View>
+      {right}
+    </View>
+  )
+  return onPress ? (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => ({ borderRadius: theme.radius.md, opacity: pressed ? 0.72 : 1 })}
+    >
+      {body}
+    </Pressable>
+  ) : (
+    body
+  )
+}

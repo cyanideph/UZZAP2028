@@ -1,6 +1,6 @@
-export type ConversationId=string;
+export type ConversationId = string
 
-export interface ConversationMessagePage{
-  items:unknown[];
-  nextCursor?:{beforeCreatedAt:string;beforeId:string}|null;
+export interface ConversationMessagePage {
+  items: unknown[]
+  nextCursor?: { beforeCreatedAt: string; beforeId: string } | null
 }

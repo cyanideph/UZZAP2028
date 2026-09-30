@@ -1,2 +1,43 @@
-import {View,Pressable} from "react-native"; import {Text} from "./Text"; import {useTheme} from "../../theme";
-export function ModerationActionSheet({onAction}:{onAction?:(action:string)=>void}){const {theme}=useTheme();const actions=[["mute","Mute member"],["ban","Ban member"],["kick","Kick member"],["strike","Issue strike"],["delete","Remove message"],["dismiss","Dismiss"]];return <View style={{gap:8}}>{actions.map(([id,label])=><Pressable key={id} accessibilityRole="button" onPress={()=>onAction?.(id)} style={({pressed})=>({minHeight:48,paddingHorizontal:14,borderRadius:theme.radius.md,justifyContent:"center",backgroundColor:id==="dismiss"?theme.colors.surfaceMuted:theme.colors.dangerSoft,opacity:pressed?.65:1})}><Text variant="body" style={{fontWeight:"700",color:id==="dismiss"?theme.colors.text:theme.colors.danger}}>{label}</Text></Pressable>)}</View>}
+import { View, Pressable } from 'react-native'
+import { Text } from './Text'
+import { useTheme } from '../../theme'
+export function ModerationActionSheet({ onAction }: { onAction?: (action: string) => void }) {
+  const { theme } = useTheme()
+  const actions = [
+    ['mute', 'Mute member'],
+    ['ban', 'Ban member'],
+    ['kick', 'Kick member'],
+    ['strike', 'Issue strike'],
+    ['delete', 'Remove message'],
+    ['dismiss', 'Dismiss'],
+  ]
+  return (
+    <View style={{ gap: 8 }}>
+      {actions.map(([id, label]) => (
+        <Pressable
+          key={id}
+          accessibilityRole="button"
+          onPress={() => onAction?.(id)}
+          style={({ pressed }) => ({
+            minHeight: 48,
+            paddingHorizontal: 14,
+            borderRadius: theme.radius.md,
+            justifyContent: 'center',
+            backgroundColor: id === 'dismiss' ? theme.colors.surfaceMuted : theme.colors.dangerSoft,
+            opacity: pressed ? 0.65 : 1,
+          })}
+        >
+          <Text
+            variant="body"
+            style={{
+              fontWeight: '700',
+              color: id === 'dismiss' ? theme.colors.text : theme.colors.danger,
+            }}
+          >
+            {label}
+          </Text>
+        </Pressable>
+      ))}
+    </View>
+  )
+}

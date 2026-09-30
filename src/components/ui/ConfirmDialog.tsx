@@ -1,2 +1,61 @@
-import {ReactNode} from "react"; import {Modal,Pressable,Text,View} from "react-native"; import {useTheme} from "../../theme"; import {Button} from "./Button";
-export function ConfirmDialog({visible,onClose,onConfirm,title,message,confirmLabel="Confirm",danger=false}:{visible:boolean;onClose:()=>void;onConfirm:()=>void;title:string;message?:string;confirmLabel?:string;danger?:boolean}){const {theme}=useTheme();return <Modal transparent visible={visible} animationType="fade" onRequestClose={onClose}><View style={{flex:1,backgroundColor:theme.colors.overlay,alignItems:"center",justifyContent:"center",padding:24}}><View style={{width:"100%",backgroundColor:theme.colors.surface,borderRadius:theme.radius.xl,padding:20,gap:12}}><Text style={{fontSize:20,fontWeight:"800",color:theme.colors.text}}>{title}</Text>{message&&<Text style={{fontSize:14,lineHeight:20,color:theme.colors.textSecondary}}>{message}</Text>}<View style={{flexDirection:"row",gap:10,justifyContent:"flex-end",marginTop:8}}><Button variant="ghost" onPress={onClose}>Cancel</Button><Button variant={danger?"danger":"primary"} onPress={onConfirm}>{confirmLabel}</Button></View></View></View></Modal>}
+import { ReactNode } from 'react'
+import { Modal, Pressable, Text, View } from 'react-native'
+import { useTheme } from '../../theme'
+import { Button } from './Button'
+export function ConfirmDialog({
+  visible,
+  onClose,
+  onConfirm,
+  title,
+  message,
+  confirmLabel = 'Confirm',
+  danger = false,
+}: {
+  visible: boolean
+  onClose: () => void
+  onConfirm: () => void
+  title: string
+  message?: string
+  confirmLabel?: string
+  danger?: boolean
+}) {
+  const { theme } = useTheme()
+  return (
+    <Modal transparent visible={visible} animationType="fade" onRequestClose={onClose}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: theme.colors.overlay,
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 24,
+        }}
+      >
+        <View
+          style={{
+            width: '100%',
+            backgroundColor: theme.colors.surface,
+            borderRadius: theme.radius.xl,
+            padding: 20,
+            gap: 12,
+          }}
+        >
+          <Text style={{ fontSize: 20, fontWeight: '800', color: theme.colors.text }}>{title}</Text>
+          {message && (
+            <Text style={{ fontSize: 14, lineHeight: 20, color: theme.colors.textSecondary }}>
+              {message}
+            </Text>
+          )}
+          <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'flex-end', marginTop: 8 }}>
+            <Button variant="ghost" onPress={onClose}>
+              Cancel
+            </Button>
+            <Button variant={danger ? 'danger' : 'primary'} onPress={onConfirm}>
+              {confirmLabel}
+            </Button>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  )
+}

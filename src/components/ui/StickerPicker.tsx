@@ -1,3 +1,45 @@
-import {Pressable,View} from "react-native"; import {Text} from "./Text"; import {useTheme} from "../../theme";
-const STICKERS=[["😂","laugh"],["❤️","heart"],["🔥","fire"],["👍","like"],["😍","love"],["😎","cool"],["😭","cry"],["😡","angry"],["🎉","party"],["💯","100"]];
-export function StickerPicker({onSelect}:{onSelect?:(stickerId:string,label:string)=>void}){const {theme}=useTheme();return <View style={{flexDirection:"row",flexWrap:"wrap",gap:10,paddingTop:12}}>{STICKERS.map(([label,stickerId])=><Pressable key={stickerId} accessibilityRole="button" accessibilityLabel={`Send ${stickerId} sticker`} onPress={()=>onSelect?.(stickerId,label)} style={({pressed})=>({width:54,height:54,borderRadius:theme.radius.lg,alignItems:"center",justifyContent:"center",backgroundColor:theme.colors.surfaceMuted,opacity:pressed?.65:1})}><Text style={{fontSize:27}}>{label}</Text></Pressable>)}</View>}
+import { Pressable, View } from 'react-native'
+import { Text } from './Text'
+import { useTheme } from '../../theme'
+const STICKERS = [
+  ['😂', 'laugh'],
+  ['❤️', 'heart'],
+  ['🔥', 'fire'],
+  ['👍', 'like'],
+  ['😍', 'love'],
+  ['😎', 'cool'],
+  ['😭', 'cry'],
+  ['😡', 'angry'],
+  ['🎉', 'party'],
+  ['💯', '100'],
+]
+export function StickerPicker({
+  onSelect,
+}: {
+  onSelect?: (stickerId: string, label: string) => void
+}) {
+  const { theme } = useTheme()
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, paddingTop: 12 }}>
+      {STICKERS.map(([label, stickerId]) => (
+        <Pressable
+          key={stickerId}
+          accessibilityRole="button"
+          accessibilityLabel={`Send ${stickerId} sticker`}
+          onPress={() => onSelect?.(stickerId, label)}
+          style={({ pressed }) => ({
+            width: 54,
+            height: 54,
+            borderRadius: theme.radius.lg,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: theme.colors.surfaceMuted,
+            opacity: pressed ? 0.65 : 1,
+          })}
+        >
+          <Text style={{ fontSize: 27 }}>{label}</Text>
+        </Pressable>
+      ))}
+    </View>
+  )
+}

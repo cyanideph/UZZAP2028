@@ -186,12 +186,12 @@ describe('Auth Validation Schemas', () => {
 
   describe('validateRedirectUrl', () => {
     it('accepts valid app scheme URL', () => {
-      expect(validateRedirectUrl('seaguntechexpotemplate://auth/callback')).toBe(true)
+      expect(validateRedirectUrl('uzzap2028://auth/callback')).toBe(true)
     })
 
     it('accepts any path with valid scheme', () => {
-      expect(validateRedirectUrl('seaguntechexpotemplate://reset-password')).toBe(true)
-      expect(validateRedirectUrl('seaguntechexpotemplate://deep/nested/path')).toBe(true)
+      expect(validateRedirectUrl('uzzap2028://reset-password')).toBe(true)
+      expect(validateRedirectUrl('uzzap2028://deep/nested/path')).toBe(true)
     })
 
     it('rejects invalid scheme', () => {
@@ -208,13 +208,13 @@ describe('Auth Validation Schemas', () => {
   describe('getValidatedRedirectUrl', () => {
     it('returns valid redirect URL for valid path', () => {
       expect(getValidatedRedirectUrl('auth/callback')).toBe(
-        'seaguntechexpotemplate://auth/callback',
+        'uzzap2028://auth/callback',
       )
     })
 
     it('returns valid redirect URL for reset-password', () => {
       expect(getValidatedRedirectUrl('reset-password')).toBe(
-        'seaguntechexpotemplate://reset-password',
+        'uzzap2028://reset-password',
       )
     })
   })

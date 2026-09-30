@@ -1,0 +1,65 @@
+appId: com.app.seaguntechexpotemplate
+name: Navigation - Tab Switching
+tags:
+  - navigation
+  - smoke
+
+---
+- launchApp:
+    clearState: true
+
+# Login first (ends on Profile tab)
+- runFlow: ../auth/login.yaml
+
+# After login.yaml, we're on Profile tab
+# Navigate to Home tab first - use index 0 for first matching element in tab bar
+- tapOn:
+    text: '.*Home.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'Quick Actions'
+    timeout: 10000
+
+# Navigate to Tasks tab
+- tapOn:
+    text: '.*Tasks.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'Review project requirements'
+    timeout: 5000
+
+# Navigate to AI Chat tab
+- tapOn:
+    text: '.*AI Chat.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'AI Chat'
+    timeout: 5000
+
+# Navigate to Profile tab
+- tapOn:
+    text: '.*Profile.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'Profile'
+    timeout: 5000
+
+# Navigate to Settings tab
+- tapOn:
+    text: '.*Settings.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'Settings'
+    timeout: 5000
+
+# Navigate back to Home
+- tapOn:
+    text: '.*Home.*'
+    index: 0
+- extendedWaitUntil:
+    visible: 'Quick Actions'
+    timeout: 5000
+
+# Verify we ended up on Home screen
+- assertVisible: 'Quick Actions'
+- assertVisible: 'Recent Activity'

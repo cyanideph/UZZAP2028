@@ -1,0 +1,82 @@
+appId: com.app.seaguntechexpotemplate
+name: Authentication - Sign Up Flow with Email Verification
+tags:
+  - auth
+  - critical
+
+---
+# Test sign up flow with email verification
+# Flow: Sign Up Form → Email Confirmation Screen → Back to Sign In
+
+- launchApp:
+    clearState: true
+
+# Wait for app to fully initialize - look for Welcome screen
+- extendedWaitUntil:
+    visible: 'Seaguntech'
+    timeout: 15000
+
+# Tap on Create Account to go to signup screen
+- tapOn: 'Create Account'
+
+# Wait for signup form to appear
+- extendedWaitUntil:
+    visible: 'Email'
+    timeout: 10000
+
+# Fill registration form using testIDs for reliable selection
+# Display name
+- tapOn:
+    id: 'auth-displayname-input'
+- inputText: 'E2E Test User'
+
+# Email - use random email for unique signup
+- tapOn:
+    id: 'auth-email-input'
+- inputRandomEmail
+
+# Password
+- tapOn:
+    id: 'auth-password-input'
+- inputText: 'TestPassword123!'
+
+# Hide keyboard and scroll to make confirm password visible
+- hideKeyboard
+- scroll
+
+# Confirm Password - tap and input
+- tapOn:
+    id: 'auth-confirmpassword-input'
+- inputText: 'TestPassword123!'
+
+# Hide keyboard before tapping submit
+- hideKeyboard
+
+# Scroll to make sure button is visible
+- scroll
+
+# Submit registration
+- tapOn: 'Create Account'
+
+# === Email Confirmation Screen ===
+# Wait for email confirmation screen to appear
+- extendedWaitUntil:
+    visible: 'Check your email'
+    timeout: 30000
+
+# Verify email confirmation UI elements
+- assertVisible: 'Check your email'
+- assertVisible: 'verify your account'
+- assertVisible: 'Back to Sign In'
+
+# Navigate back to sign in
+- tapOn: 'Back to Sign In'
+
+# === Sign In Screen ===
+# Verify we're on the sign in screen
+- extendedWaitUntil:
+    visible: 'Sign In'
+    timeout: 10000
+
+# Verify sign in form is displayed (placeholders visible = empty fields)
+- assertVisible: 'email@example.com'

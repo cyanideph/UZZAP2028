@@ -1,5 +1,5 @@
 import "../../global.css";
-import {useEffect} from "react";
+import {useEffect} from "react";\nimport {AuthProvider} from "@/context/auth-context";
 import {AppState,Platform} from "react-native";
 import {Stack} from "expo-router";
 import {SafeAreaProvider} from "react-native-safe-area-context";
@@ -29,5 +29,5 @@ function AppShell(){
 }
 
 export default function RootLayout(){
-  return <SafeAreaProvider><QueryClientProvider client={queryClient}><ThemeProvider><AppShell/></ThemeProvider></QueryClientProvider></SafeAreaProvider>;
+  return <SafeAreaProvider><QueryClientProvider client={queryClient}><AuthProvider><ThemeProvider><AppShell/></ThemeProvider></AuthProvider></QueryClientProvider></SafeAreaProvider>;
 }

@@ -19,7 +19,7 @@ const mockClearProfile = vi.fn()
 let authStateChangeHandler: ((event: string, session: unknown) => Promise<void> | void) | null =
   null
 
-vi.mock('@/config/supabase', () => ({
+vi.mock('@/lib/supabase', () => ({
   supabase: {
     auth: {
       getSession: () => mockGetSession(),
@@ -208,7 +208,7 @@ describe('AuthContext', () => {
           data: {
             display_name: 'New User',
           },
-          emailRedirectTo: 'seaguntechexpotemplate://callback',
+          emailRedirectTo: 'uzzap2028://callback',
         },
       })
     })
@@ -361,7 +361,7 @@ describe('AuthContext', () => {
       })
 
       expect(mockResetPasswordForEmail).toHaveBeenCalledWith('test@example.com', {
-        redirectTo: 'seaguntechexpotemplate://callback',
+        redirectTo: 'uzzap2028://callback',
       })
     })
 

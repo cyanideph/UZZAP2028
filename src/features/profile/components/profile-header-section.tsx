@@ -23,7 +23,7 @@ export function ProfileHeaderSection({
   return (
     <View className={cn('items-center', className)}>
       <Pressable onPress={onEditAvatar} className="relative">
-        <Avatar src={avatarUrl} fallback={displayName ?? email} size={88} />
+        <Avatar uri={avatarUrl} name={displayName ?? email} size={88} />
         <View className="absolute bottom-0 right-0 bg-primary rounded-full p-2">
           <Text className="text-primary-foreground text-xs">📷</Text>
         </View>

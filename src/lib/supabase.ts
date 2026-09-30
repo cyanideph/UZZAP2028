@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import type { Database } from '@/types/database.types'
 import { supabaseStorage } from '@/lib/storage/supabase'
 
 const url = process.env.EXPO_PUBLIC_SUPABASE_URL ?? ''
@@ -14,7 +13,7 @@ if (__DEV__ && (!url || !key)) {
   )
 }
 
-export const supabase = createClient<Database>(url, key, {
+export const supabase = createClient(url, key, {
   auth: {
     storage: supabaseStorage,
     autoRefreshToken: true,

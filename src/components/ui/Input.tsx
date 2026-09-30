@@ -3,8 +3,8 @@ import { TextInput, TextInputProps, View } from 'react-native'
 import { Text } from './Text'
 import { useTheme } from '../../theme'
 
-export const Input = forwardRef<TextInput, TextInputProps & { error?: string }>(
-  ({ error, style, ...props }, ref) => {
+export const Input = forwardRef<TextInput, TextInputProps & { error?: string; label?: string }>(
+  ({ error, label, style, ...props }, ref) => {
     const { theme } = useTheme()
 
     return (

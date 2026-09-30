@@ -30,8 +30,8 @@
     "e2e:test:ci": "maestro test e2e/maestro/config/test-suites.yaml --suite ci",
     "e2e:test:auth": "maestro test e2e/maestro/flows/auth",
     "e2e:record": "maestro record e2e/maestro/flows",
-    "circular:check": "madge --circular --extensions ts,tsx app src",
-    "circular:check:app": "madge --circular --extensions ts,tsx app",
+    "circular:check": "madge --circular --extensions ts,tsx src/app src",
+    "circular:check:app": "madge --circular --extensions ts,tsx src/app",
     "circular:check:src": "madge --circular --extensions ts,tsx src",
     "circular:graph": "madge --extensions ts,tsx --image dependency-graph.svg src",
     "build:email-templates": "tsx supabase/scripts/build-email-templates.ts"
@@ -88,7 +88,8 @@
     "react-native-worklets": "0.5.1",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.3.6",
-    "zustand": "^5.0.10"
+    "zustand": "^5.0.10",
+    "@react-native-async-storage/async-storage": "^2.2.0"
   },
   "resolutions": {
     "lightningcss": "1.30.1"

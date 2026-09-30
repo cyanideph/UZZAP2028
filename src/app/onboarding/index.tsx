@@ -1,6 +1,6 @@
 import { ONBOARDING_STEPS } from '@/constants/onboarding'
 import { useOnboardingStore } from '@/features/onboarding'
-import { Button, ProgressBar } from '@/components/ui'
+import { Button } from '@/components/ui'
 import { AnimatedView, Pressable, Text, View } from '@/tw'
 import { useRouter } from 'expo-router'
 import React from 'react'
@@ -22,7 +22,7 @@ export default function OnboardingScreen() {
       nextStep()
     } else {
       completeOnboarding()
-      router.replace('/(protected)/(tabs)')
+      router.replace('/(tabs)')
     }
   }
 
@@ -57,7 +57,7 @@ export default function OnboardingScreen() {
       </View>
 
       <View className="pt-16 px-6">
-        <ProgressBar value={((currentStep + 1) / totalSteps) * 100} variant="default" size="sm" />
+        <View className="h-2 bg-muted rounded-full overflow-hidden"><View className="h-full bg-primary" style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }} /></View>
         <Text className="text-sm text-muted-foreground text-center mt-2">
           {currentStep + 1} of {totalSteps}
         </Text>

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import * as FileSystem from 'expo-file-system'
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import type { UseImageUploadOptions, UseImageUploadResult } from '@/types'
 
 const DEFAULT_OPTIONS: UseImageUploadOptions = {

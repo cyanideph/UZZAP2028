@@ -1,2 +1,51 @@
-import {TextInput,View} from "react-native"; import {Ionicons} from "@expo/vector-icons"; import {useTheme} from "../../theme";
-export function SearchBar({value,onChangeText,placeholder="Search",onFocus}:{value?:string;onChangeText?:(v:string)=>void;placeholder?:string;onFocus?:()=>void}){const {theme}=useTheme();return <View style={{height:48,flexDirection:"row",alignItems:"center",paddingHorizontal:14,borderRadius:theme.radius.pill,backgroundColor:theme.colors.surfaceMuted,borderWidth:1,borderColor:theme.colors.border}}><Ionicons name="search" size={19} color={theme.colors.textMuted}/><TextInput accessibilityLabel={placeholder} value={value} onChangeText={onChangeText} onFocus={onFocus} placeholder={placeholder} placeholderTextColor={theme.colors.textMuted} returnKeyType="search" style={{flex:1,marginLeft:8,color:theme.colors.text,fontSize:14}}/></View>
+import { TextInput, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { useTheme } from '../../theme'
+
+interface SearchBarProps {
+  value?: string
+  onChangeText?: (value: string) => void
+  placeholder?: string
+  onFocus?: () => void
+}
+
+export function SearchBar({
+  value,
+  onChangeText,
+  placeholder = 'Search',
+  onFocus,
+}: SearchBarProps) {
+  const { theme } = useTheme()
+
+  return (
+    <View
+      style={{
+        height: 48,
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 14,
+        borderRadius: theme.radius.pill,
+        backgroundColor: theme.colors.surfaceMuted,
+        borderWidth: 1,
+        borderColor: theme.colors.border,
+      }}
+    >
+      <Ionicons name="search" size={19} color={theme.colors.textMuted} />
+      <TextInput
+        accessibilityLabel={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        onFocus={onFocus}
+        placeholder={placeholder}
+        placeholderTextColor={theme.colors.textMuted}
+        returnKeyType="search"
+        style={{
+          flex: 1,
+          marginLeft: 8,
+          color: theme.colors.text,
+          fontSize: 14,
+        }}
+      />
+    </View>
+  )
+}

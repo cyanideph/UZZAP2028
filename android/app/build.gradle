@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.app.seaguntechexpotemplate'
+    namespace 'com.cyanideph.uzzap2028'
     defaultConfig {
-        applicationId 'com.app.seaguntechexpotemplate'
+        applicationId 'com.cyanideph.uzzap2028'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

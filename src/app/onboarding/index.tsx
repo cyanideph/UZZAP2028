@@ -28,7 +28,7 @@ export default function OnboardingScreen() {
 
   const handleSkip = () => {
     completeOnboarding()
-    router.replace('/(protected)/(tabs)')
+    router.replace('/(tabs)')
   }
 
   const panGesture = Gesture.Pan()

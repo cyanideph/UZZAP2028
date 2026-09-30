@@ -1765,6 +1765,19 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_content_poll_results: {
+        Args: { p_content_id: string }
+        Returns: Json
+      }
+      list_content_comments: {
+        Args: {
+          p_before_created_at?: string | null
+          p_before_id?: string | null
+          p_content_id: string
+          p_limit?: number
+        }
+        Returns: Json
+      }
       accept_room_co_host_request: {
         Args: { p_request_id: string }
         Returns: {

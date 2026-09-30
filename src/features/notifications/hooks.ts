@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useMutation,useQuery,useQueryClient} from "@tanstack/react-query";
 import type {RealtimeChannel} from "@supabase/supabase-js";
-import {listNotifications,markNotificationRead,markAllNotificationsRead,getNotificationPreferences,setNotificationPreferences} from "./api";
+import {listNotifications,markNotificationRead,markAllNotificationsRead,getNotificationPreferences,setNotificationPreferences,type NotificationPreferences} from "./api";
 import {supabase} from "@/lib/supabase";
 
 export function useNotifications(){
@@ -30,7 +30,7 @@ export function useNotifications(){
 export function useMarkNotificationRead(){
   const qc=useQueryClient();
   return useMutation({
-    mutationFn:(id)=>markNotificationRead(id),
+    mutationFn:(id: string)=>markNotificationRead(id),
     onMutate:async id=>{
       await qc.cancelQueries({queryKey:["notifications"]});
       return {previous:qc.getQueryData(["notifications"])};
@@ -64,7 +64,7 @@ export function useNotificationPreferences(){
 export function useSetNotificationPreferences(){
   const qc=useQueryClient();
   return useMutation({
-    mutationFn:(next)=>setNotificationPreferences(next),
+    mutationFn:(next: NotificationPreferences)=>setNotificationPreferences(next),
     onMutate:async next=>{
       await qc.cancelQueries({queryKey:["notification-preferences"]});
       const previous=qc.getQueryData(["notification-preferences"]);

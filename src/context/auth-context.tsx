@@ -1,4 +1,4 @@
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import { queryClient } from '@/lib/query-client'
 import { clearAuthStorage } from '@/lib/storage/supabase'
 import {

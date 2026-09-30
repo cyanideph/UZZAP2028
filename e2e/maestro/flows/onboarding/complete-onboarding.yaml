@@ -1,4 +1,4 @@
-appId: com.app.seaguntechexpotemplate
+appId: com.cyanideph.uzzap2028
 name: Complete Onboarding Flow
 tags:
   - onboarding
@@ -8,9 +8,9 @@ tags:
 # Onboarding is a subflow that can be called by other tests
 # Complete all onboarding steps
 
-# Step 1: Welcome to Seaguntech
+# Step 1: Welcome to UZZAP
 - extendedWaitUntil:
-    visible: 'Welcome to Seaguntech'
+    visible: 'Welcome to UZZAP'
     timeout: 10000
 
 # Tap Next to proceed to step 2

@@ -1,4 +1,4 @@
-appId: com.app.seaguntechexpotemplate
+appId: com.cyanideph.uzzap2028
 name: Authentication - Login Flow
 tags:
   - auth
@@ -18,7 +18,7 @@ env:
 
 # Wait for app to fully initialize and stabilize
 - extendedWaitUntil:
-    visible: 'Seaguntech'
+    visible: 'UZZAP'
     timeout: 15000
 
 # The app shows Welcome screen first with "Create Account" and "Sign In" buttons
@@ -31,10 +31,12 @@ env:
     timeout: 10000
 
 # Enter credentials from environment variables
-- tapOn: 'email@example.com'
+- tapOn:
+    id: 'auth-email-input'
 - inputText: ${TEST_EMAIL}
 
-- tapOn: '••••••••'
+- tapOn:
+    id: 'auth-password-input'
 - inputText: ${TEST_PASSWORD}
 
 # Hide keyboard before tapping submit button
@@ -44,7 +46,8 @@ env:
 - scroll
 
 # Submit login - tap on Sign In button in the form
-- tapOn: 'Sign In'
+- tapOn:
+    id: 'auth-signin-button'
 
 # Wait for login to complete - either onboarding or home
 - extendedWaitUntil:
@@ -54,7 +57,7 @@ env:
 # Handle onboarding if this is first login (check for Welcome screen)
 - runFlow:
     when:
-      visible: 'Welcome to Seaguntech'
+      visible: 'Welcome to UZZAP'
     file: ../onboarding/complete-onboarding.yaml
 
 # Wait for home screen after onboarding
@@ -64,8 +67,7 @@ env:
 
 # Verify successful login - home screen and tabs visible
 - assertVisible: 'Home'
-- assertVisible:
-    text: '.*Tasks.*'
+- assertVisible: 'Discover'
 
 # Navigate to Profile tab
 - tapOn:

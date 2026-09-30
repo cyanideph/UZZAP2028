@@ -17,8 +17,8 @@ describe('Navigation auth mapping', () => {
   })
 
   it('builds deep links for callback screens', () => {
-    expect(DeepLinks.authCallback()).toBe('seaguntechexpotemplate://callback')
-    expect(DeepLinks.authConfirm()).toBe('seaguntechexpotemplate://confirm')
-    expect(DeepLinks.setPassword()).toBe('seaguntechexpotemplate://set-password')
+    expect(DeepLinks.authCallback()).toBe('uzzap2028://callback')
+    expect(DeepLinks.authConfirm()).toBe('uzzap2028://confirm')
+    expect(DeepLinks.setPassword()).toBe('uzzap2028://set-password')
   })
 })

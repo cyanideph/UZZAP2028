@@ -144,13 +144,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       const nextUserId = session?.user?.id ?? null
       const didUserChange = currentUserIdRef.current !== nextUserId
 
       // Prevent cross-user data leakage by clearing all server caches on auth principal change.
       if (didUserChange) {
-        await queryClient.cancelQueries()
+        void queryClient.cancelQueries()
         queryClient.clear()
       }
       currentUserIdRef.current = nextUserId

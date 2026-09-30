@@ -50,7 +50,8 @@ jobs:
         with:
           api-level: 35
           arch: x86_64
-          profile: Pixel_6
+          emulator-boot-timeout: 600
+          disable-animations: true
           script: |
             adb install android/app/build/outputs/apk/debug/app-debug.apk
             adb shell am force-stop com.cyanideph.uzzap2028

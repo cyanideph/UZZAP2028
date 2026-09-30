@@ -24,7 +24,8 @@ const StripeContext = createContext<StripeContextValue | null>(null)
 
 // Stripe publishable key - to be set in environment
 const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ''
-const MERCHANT_IDENTIFIER = process.env.EXPO_PUBLIC_MERCHANT_IDENTIFIER ?? 'merchant.com.cyanideph.uzzap2028'
+const MERCHANT_IDENTIFIER =
+  process.env.EXPO_PUBLIC_MERCHANT_IDENTIFIER ?? 'merchant.com.cyanideph.uzzap2028'
 const URL_SCHEME = process.env.EXPO_PUBLIC_URL_SCHEME ?? 'uzzap2028'
 
 interface StripeProviderProps {
@@ -54,9 +55,12 @@ function StripeContextProvider({ children }: StripeProviderProps) {
       setError(null)
 
       try {
-        const { data, error: fnError } = await supabase.functions.invoke('create-payment-intent', {
-          body: request,
-        })
+        const { data, error: fnError } = await supabase.functions.invoke(
+          'create-payment-intent',
+          {
+            body: request,
+          },
+        )
 
         if (fnError) throw fnError
         if (!data?.clientSecret) throw new Error('No client secret returned')
@@ -64,7 +68,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
         // Initialize payment sheet
         const { error: initError } = await initPaymentSheet({
           paymentIntentClientSecret: data.clientSecret,
-          merchantDisplayName: 'Seaguntech',
+          merchantDisplayName: 'UZZAP 2028',
           applePay: {
             merchantCountryCode: 'US',
           },

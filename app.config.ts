@@ -5,17 +5,17 @@ const APP_ENV = process.env.APP_ENV || 'development'
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
-    name: 'SeagunTech',
-    slug: 'seaguntech-expo-template',
+    name: 'UZZAP 2028',
+    slug: 'uzzap2028',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icons/app-icon.png',
-    scheme: 'seaguntechexpotemplate',
+    scheme: 'uzzap2028',
     userInterfaceStyle: 'automatic',
     newArchEnabled: true,
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.app.seaguntechexpotemplate',
+      bundleIdentifier: 'com.cyanideph.uzzap2028',
     },
     android: {
       adaptiveIcon: {
@@ -23,7 +23,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         foregroundImage: './assets/icons/app-icon.png',
       },
       edgeToEdgeEnabled: true,
-      package: 'com.app.seaguntechexpotemplate',
+      package: 'com.cyanideph.uzzap2028',
     },
     web: {
       output: 'static',

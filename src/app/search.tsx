@@ -7,7 +7,6 @@ import {
   EmptyState,
   Header,
   LoadingState,
-  PostCard,
   SearchBar,
   SegmentedControl,
   Text,

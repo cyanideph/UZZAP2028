@@ -24,7 +24,7 @@ export default function SignInScreen() {
     setAuthError(null)
     try {
       await signIn({ email, password })
-      router.replace('/(protected)/(tabs)')
+      router.replace('/(tabs)')
     } catch (err) {
       setAuthError(err instanceof Error ? err.message : t('auth.invalidCredentials'))
     }

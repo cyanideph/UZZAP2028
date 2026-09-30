@@ -136,12 +136,9 @@ function StripeContextProvider({ children }: StripeProviderProps) {
       setError(null)
 
       try {
-        const { paymentIntent, error: confirmError } = await confirmStripePayment(
-          clientSecret,
-          {
-            paymentMethodType: 'Card',
-          },
-        )
+        const { paymentIntent, error: confirmError } = await confirmStripePayment(clientSecret, {
+          paymentMethodType: 'Card',
+        })
 
         if (confirmError) throw new Error(confirmError.message)
 

@@ -1,4 +1,4 @@
-appId: com.app.seaguntechexpotemplate
+appId: com.cyanideph.uzzap2028
 name: Authentication - Sign Up Flow with Email Verification
 tags:
   - auth
@@ -13,7 +13,7 @@ tags:
 
 # Wait for app to fully initialize - look for Welcome screen
 - extendedWaitUntil:
-    visible: 'Seaguntech'
+    visible: 'UZZAP'
     timeout: 15000
 
 # Tap on Create Account to go to signup screen

@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import * as Notifications from 'expo-notifications'
 import * as Device from 'expo-device'
 import Constants from 'expo-constants'
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter, useRootNavigationState, useLocalSearchParams } from 'expo-router'
 import * as Linking from 'expo-linking'
-import { supabase } from '@/config/supabase'
+import { supabase } from '@/lib/supabase'
 import {
   toStringParam,
   extractVerificationType,

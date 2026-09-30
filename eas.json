@@ -17,7 +17,7 @@
       },
       "cache": {
         "key": "development-{{ arch }}-{{ .Environment.GITHUB_SHA }}",
-        "customPaths": [
+        "paths": [
           "node_modules",
           "ios/Pods",
           "android/.gradle"
@@ -39,7 +39,7 @@
       },
       "cache": {
         "key": "preview-{{ arch }}-{{ .Environment.GITHUB_SHA }}",
-        "customPaths": [
+        "paths": [
           "node_modules",
           "ios/Pods",
           "android/.gradle"
@@ -66,7 +66,7 @@
       },
       "cache": {
         "key": "staging-{{ arch }}-{{ .Environment.GITHUB_SHA }}",
-        "customPaths": [
+        "paths": [
           "node_modules",
           "ios/Pods",
           "android/.gradle"
@@ -86,7 +86,7 @@
       },
       "cache": {
         "key": "production-{{ arch }}-{{ .Environment.GITHUB_SHA }}",
-        "customPaths": [
+        "paths": [
           "node_modules",
           "ios/Pods",
           "android/.gradle"

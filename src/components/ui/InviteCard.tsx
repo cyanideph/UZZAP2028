@@ -1,2 +1,38 @@
-import {View} from "react-native"; import {Button} from "./Button"; import {Text} from "./Text"; import {useTheme} from "../../theme";
-export function InviteCard({title,subtitle,onAccept,onDecline}:{title:string;subtitle?:string;onAccept?:()=>void;onDecline?:()=>void}){const {theme}=useTheme();return <View style={{padding:16,gap:8,borderRadius:theme.radius.xl,backgroundColor:theme.colors.primarySoft,borderWidth:1,borderColor:theme.colors.primary}}><Text variant="subtitle">{title}</Text>{subtitle&&<Text variant="caption">{subtitle}</Text>}<View style={{flexDirection:"row",gap:8,marginTop:4}}><Button onPress={onAccept}>Accept</Button><Button variant="ghost" onPress={onDecline}>Decline</Button></View></View>}
+import { View } from 'react-native'
+import { Button } from './Button'
+import { Text } from './Text'
+import { useTheme } from '../../theme'
+export function InviteCard({
+  title,
+  subtitle,
+  onAccept,
+  onDecline,
+}: {
+  title: string
+  subtitle?: string
+  onAccept?: () => void
+  onDecline?: () => void
+}) {
+  const { theme } = useTheme()
+  return (
+    <View
+      style={{
+        padding: 16,
+        gap: 8,
+        borderRadius: theme.radius.xl,
+        backgroundColor: theme.colors.primarySoft,
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
+      }}
+    >
+      <Text variant="subtitle">{title}</Text>
+      {subtitle && <Text variant="caption">{subtitle}</Text>}
+      <View style={{ flexDirection: 'row', gap: 8, marginTop: 4 }}>
+        <Button onPress={onAccept}>Accept</Button>
+        <Button variant="ghost" onPress={onDecline}>
+          Decline
+        </Button>
+      </View>
+    </View>
+  )
+}

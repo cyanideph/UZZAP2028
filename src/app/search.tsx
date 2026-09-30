@@ -27,8 +27,7 @@ export default function Search() {
 
   const loading =
     tab === 'People' ? people.isLoading : tab === 'Communities' ? rooms.isLoading : posts.isLoading
-  const error =
-    tab === 'People' ? people.error : tab === 'Communities' ? rooms.error : posts.error
+  const error = tab === 'People' ? people.error : tab === 'Communities' ? rooms.error : posts.error
   const data = tab === 'People' ? people.data : tab === 'Communities' ? rooms.data : posts.data
 
   return (
@@ -43,10 +42,7 @@ export default function Search() {
         />
 
         {!q ? (
-          <EmptyState
-            title="Start exploring"
-            message="Search for people, communities and posts."
-          />
+          <EmptyState title="Start exploring" message="Search for people, communities and posts." />
         ) : loading ? (
           <LoadingState />
         ) : error ? (
@@ -61,8 +57,7 @@ export default function Search() {
                 name={p.display_name ?? p.username}
                 username={p.username}
                 online={
-                  !!p.last_seen_at &&
-                  Date.now() - new Date(p.last_seen_at).getTime() < 120000
+                  !!p.last_seen_at && Date.now() - new Date(p.last_seen_at).getTime() < 120000
                 }
                 onPress={() =>
                   router.push({
@@ -115,13 +110,7 @@ export default function Search() {
   )
 }
 
-function PostSearchRow({
-  post,
-  onPress,
-}: {
-  post: any
-  onPress?: () => void
-}) {
+function PostSearchRow({ post, onPress }: { post: any; onPress?: () => void }) {
   const { theme } = useTheme()
 
   return (

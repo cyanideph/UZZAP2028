@@ -1,3 +1,59 @@
-import {supabase} from "@/lib/supabase"; export async function listNotifications(beforeCreatedAt:string|null=null,beforeId:string|null=null,limit=50){const {data,error}=await supabase.rpc("list_notifications",{p_before_created_at:beforeCreatedAt,p_before_id:beforeId,p_limit:limit});if(error)throw error;return data;} export async function markNotificationRead(notificationId:string){const {data,error}=await supabase.rpc("mark_notification_read",{p_notification_id:notificationId});if(error)throw error;return data;} export async function markAllNotificationsRead(){const {data,error}=await supabase.rpc("mark_all_notifications_read");if(error)throw error;return data;} export type NotificationPreferences={follow_enabled:boolean;block_enabled:boolean;content_comment_enabled:boolean;comment_reply_enabled:boolean;content_reaction_enabled:boolean;room_message_reaction_enabled:boolean;profile_comment_enabled:boolean;mention_enabled:boolean;room_invite_enabled:boolean;conversation_invite_enabled:boolean};
-export async function getNotificationPreferences(){const {data,error}=await supabase.rpc("get_notification_preferences");if(error)throw error;return data as NotificationPreferences;}
-export async function setNotificationPreferences(v:NotificationPreferences){const {data,error}=await supabase.rpc("set_notification_preferences",{p_follow_enabled:v.follow_enabled,p_block_enabled:v.block_enabled,p_content_comment_enabled:v.content_comment_enabled,p_comment_reply_enabled:v.comment_reply_enabled,p_content_reaction_enabled:v.content_reaction_enabled,p_room_message_reaction_enabled:v.room_message_reaction_enabled,p_profile_comment_enabled:v.profile_comment_enabled,p_mention_enabled:v.mention_enabled,p_room_invite_enabled:v.room_invite_enabled,p_conversation_invite_enabled:v.conversation_invite_enabled});if(error)throw error;return data;}
+import { supabase } from '@/lib/supabase'
+export async function listNotifications(
+  beforeCreatedAt: string | null = null,
+  beforeId: string | null = null,
+  limit = 50,
+) {
+  const { data, error } = await supabase.rpc('list_notifications', {
+    p_before_created_at: beforeCreatedAt,
+    p_before_id: beforeId,
+    p_limit: limit,
+  })
+  if (error) throw error
+  return data
+}
+export async function markNotificationRead(notificationId: string) {
+  const { data, error } = await supabase.rpc('mark_notification_read', {
+    p_notification_id: notificationId,
+  })
+  if (error) throw error
+  return data
+}
+export async function markAllNotificationsRead() {
+  const { data, error } = await supabase.rpc('mark_all_notifications_read')
+  if (error) throw error
+  return data
+}
+export type NotificationPreferences = {
+  follow_enabled: boolean
+  block_enabled: boolean
+  content_comment_enabled: boolean
+  comment_reply_enabled: boolean
+  content_reaction_enabled: boolean
+  room_message_reaction_enabled: boolean
+  profile_comment_enabled: boolean
+  mention_enabled: boolean
+  room_invite_enabled: boolean
+  conversation_invite_enabled: boolean
+}
+export async function getNotificationPreferences() {
+  const { data, error } = await supabase.rpc('get_notification_preferences')
+  if (error) throw error
+  return data as NotificationPreferences
+}
+export async function setNotificationPreferences(v: NotificationPreferences) {
+  const { data, error } = await supabase.rpc('set_notification_preferences', {
+    p_follow_enabled: v.follow_enabled,
+    p_block_enabled: v.block_enabled,
+    p_content_comment_enabled: v.content_comment_enabled,
+    p_comment_reply_enabled: v.comment_reply_enabled,
+    p_content_reaction_enabled: v.content_reaction_enabled,
+    p_room_message_reaction_enabled: v.room_message_reaction_enabled,
+    p_profile_comment_enabled: v.profile_comment_enabled,
+    p_mention_enabled: v.mention_enabled,
+    p_room_invite_enabled: v.room_invite_enabled,
+    p_conversation_invite_enabled: v.conversation_invite_enabled,
+  })
+  if (error) throw error
+  return data
+}

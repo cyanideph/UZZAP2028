@@ -1,2 +1,21 @@
-import {ReactNode} from "react"; import {View,ViewStyle} from "react-native"; import {useTheme} from "../../theme";
-export function Surface({children,style}:{children:ReactNode;style?:ViewStyle}){const {theme}=useTheme();return <View style={[{backgroundColor:theme.colors.surface,borderColor:theme.colors.border,borderWidth:1,borderRadius:theme.radius.lg},style]}>{children}</View>}
+import { ReactNode } from 'react'
+import { View, ViewStyle } from 'react-native'
+import { useTheme } from '../../theme'
+export function Surface({ children, style }: { children: ReactNode; style?: ViewStyle }) {
+  const { theme } = useTheme()
+  return (
+    <View
+      style={[
+        {
+          backgroundColor: theme.colors.surface,
+          borderColor: theme.colors.border,
+          borderWidth: 1,
+          borderRadius: theme.radius.lg,
+        },
+        style,
+      ]}
+    >
+      {children}
+    </View>
+  )
+}

@@ -1,2 +1,32 @@
-import {Pressable,Text,View} from "react-native"; import {ThemePreference,useTheme} from "../../theme";
-export function ThemeSelector(){const {theme,preference,setPreference}=useTheme();return <View style={{gap:8}}>{(["system","light","dark"] as ThemePreference[]).map(item=><Pressable key={item} onPress={()=>setPreference(item)} style={{padding:14,borderRadius:theme.radius.md,borderWidth:1,borderColor:preference===item?theme.colors.primary:theme.colors.border,backgroundColor:preference===item?theme.colors.primarySoft:theme.colors.surface}}><Text style={{color:theme.colors.text,fontWeight:preference===item?"700":"500",textTransform:"capitalize"}}>{item}</Text></Pressable>)}</View>}
+import { Pressable, Text, View } from 'react-native'
+import { ThemePreference, useTheme } from '../../theme'
+export function ThemeSelector() {
+  const { theme, preference, setPreference } = useTheme()
+  return (
+    <View style={{ gap: 8 }}>
+      {(['system', 'light', 'dark'] as ThemePreference[]).map((item) => (
+        <Pressable
+          key={item}
+          onPress={() => setPreference(item)}
+          style={{
+            padding: 14,
+            borderRadius: theme.radius.md,
+            borderWidth: 1,
+            borderColor: preference === item ? theme.colors.primary : theme.colors.border,
+            backgroundColor: preference === item ? theme.colors.primarySoft : theme.colors.surface,
+          }}
+        >
+          <Text
+            style={{
+              color: theme.colors.text,
+              fontWeight: preference === item ? '700' : '500',
+              textTransform: 'capitalize',
+            }}
+          >
+            {item}
+          </Text>
+        </Pressable>
+      ))}
+    </View>
+  )
+}

@@ -1,2 +1,61 @@
-import {Pressable,Text,View} from "react-native"; import {useTheme} from "../theme";
-export function CommunityCard({name,subtitle,color,onPress}:{name:string;subtitle:string;color?:string;onPress?:()=>void}){const {theme}=useTheme();const accent=color??theme.colors.primary;return <Pressable accessibilityRole="button" onPress={onPress} style={({pressed})=>[{backgroundColor:theme.colors.surface,borderRadius:theme.radius.xl,padding:16,marginBottom:12,borderWidth:1,borderColor:theme.colors.border,opacity:pressed?.82:1,transform:[{scale:pressed?.99:1}]}]}><View style={{flexDirection:"row",alignItems:"center"}}><View style={{width:54,height:54,borderRadius:theme.radius.lg,backgroundColor:accent,alignItems:"center",justifyContent:"center"}}><Text style={{fontSize:22,fontWeight:"900",color:"#fff"}}>{name.slice(0,1).toUpperCase()}</Text></View><View style={{marginLeft:12,flex:1}}><Text style={{fontSize:16,fontWeight:"800",color:theme.colors.text}}>{name}</Text><Text style={{fontSize:13,color:theme.colors.textSecondary,marginTop:3}} numberOfLines={1}>{subtitle}</Text></View><Text style={{fontSize:24,color:theme.colors.textMuted}}>›</Text></View></Pressable>}
+import { Pressable, Text, View } from 'react-native'
+import { useTheme } from '../theme'
+export function CommunityCard({
+  name,
+  subtitle,
+  color,
+  onPress,
+}: {
+  name: string
+  subtitle: string
+  color?: string
+  onPress?: () => void
+}) {
+  const { theme } = useTheme()
+  const accent = color ?? theme.colors.primary
+  return (
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }) => [
+        {
+          backgroundColor: theme.colors.surface,
+          borderRadius: theme.radius.xl,
+          padding: 16,
+          marginBottom: 12,
+          borderWidth: 1,
+          borderColor: theme.colors.border,
+          opacity: pressed ? 0.82 : 1,
+          transform: [{ scale: pressed ? 0.99 : 1 }],
+        },
+      ]}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View
+          style={{
+            width: 54,
+            height: 54,
+            borderRadius: theme.radius.lg,
+            backgroundColor: accent,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Text style={{ fontSize: 22, fontWeight: '900', color: '#fff' }}>
+            {name.slice(0, 1).toUpperCase()}
+          </Text>
+        </View>
+        <View style={{ marginLeft: 12, flex: 1 }}>
+          <Text style={{ fontSize: 16, fontWeight: '800', color: theme.colors.text }}>{name}</Text>
+          <Text
+            style={{ fontSize: 13, color: theme.colors.textSecondary, marginTop: 3 }}
+            numberOfLines={1}
+          >
+            {subtitle}
+          </Text>
+        </View>
+        <Text style={{ fontSize: 24, color: theme.colors.textMuted }}>›</Text>
+      </View>
+    </Pressable>
+  )
+}

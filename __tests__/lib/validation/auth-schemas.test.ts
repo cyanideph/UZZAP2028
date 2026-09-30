@@ -207,15 +207,11 @@ describe('Auth Validation Schemas', () => {
 
   describe('getValidatedRedirectUrl', () => {
     it('returns valid redirect URL for valid path', () => {
-      expect(getValidatedRedirectUrl('auth/callback')).toBe(
-        'uzzap2028://auth/callback',
-      )
+      expect(getValidatedRedirectUrl('auth/callback')).toBe('uzzap2028://auth/callback')
     })
 
     it('returns valid redirect URL for reset-password', () => {
-      expect(getValidatedRedirectUrl('reset-password')).toBe(
-        'uzzap2028://reset-password',
-      )
+      expect(getValidatedRedirectUrl('reset-password')).toBe('uzzap2028://reset-password')
     })
   })
 })

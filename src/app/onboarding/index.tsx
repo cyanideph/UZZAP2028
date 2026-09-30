@@ -57,7 +57,12 @@ export default function OnboardingScreen() {
       </View>
 
       <View className="pt-16 px-6">
-        <View className="h-2 bg-muted rounded-full overflow-hidden"><View className="h-full bg-primary" style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }} /></View>
+        <View className="h-2 bg-muted rounded-full overflow-hidden">
+          <View
+            className="h-full bg-primary"
+            style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
+          />
+        </View>
         <Text className="text-sm text-muted-foreground text-center mt-2">
           {currentStep + 1} of {totalSteps}
         </Text>

@@ -72,9 +72,7 @@ export async function listConversations(limit = 50) {
 
   const { data, error } = await supabase
     .from('conversation_members')
-    .select(
-      'conversation_id,role,last_read_at,conversations(id,title,kind,updated_at,created_by)',
-    )
+    .select('conversation_id,role,last_read_at,conversations(id,title,kind,updated_at,created_by)')
     .eq('user_id', user.id)
     .order('last_read_at', { ascending: false, nullsFirst: false })
     .limit(limit)

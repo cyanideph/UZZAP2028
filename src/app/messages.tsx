@@ -1,2 +1,48 @@
-import {View} from "react-native"; import {router} from "expo-router"; import {Screen} from "@/components/Screen"; import {EmptyState,Header,LoadingState,Text,UserRow} from "@/components/ui"; import {useConversations} from "@/features/conversations/hooks"; import {useTheme} from "@/theme";
-export default function Messages(){const {theme}=useTheme();const q=useConversations();const rows=q.data??[];return <Screen><Header title="Messages" subtitle="Your private conversations"/><View style={{gap:6}}>{q.isLoading?<LoadingState/>:q.error?<Text variant="caption" style={{color:theme.colors.danger}}>Unable to load messages. Please try again.</Text>:rows.length?rows.map((row:any,i:number)=>{const c=row.conversations;const title=c?.title??(c?.kind==="group"?"Group conversation":"Conversation");return <UserRow key={row.conversation_id??i} name={title} username={c?.kind==="group"?"Group":"Direct"} onPress={()=>router.push({pathname:"/conversation/[id]",params:{id:row.conversation_id}})}/>;}):<EmptyState title="No conversations yet" message="Open a profile and start a conversation."/>}</View></Screen>}
+import { View } from 'react-native'
+import { router } from 'expo-router'
+import { Screen } from '@/components/Screen'
+import { EmptyState, Header, LoadingState, Text, UserRow } from '@/components/ui'
+import { useConversations } from '@/features/conversations/hooks'
+import { useTheme } from '@/theme'
+export default function Messages() {
+  const { theme } = useTheme()
+  const q = useConversations()
+  const rows = q.data ?? []
+  return (
+    <Screen>
+      <Header title="Messages" subtitle="Your private conversations" />
+      <View style={{ gap: 6 }}>
+        {q.isLoading ? (
+          <LoadingState />
+        ) : q.error ? (
+          <Text variant="caption" style={{ color: theme.colors.danger }}>
+            Unable to load messages. Please try again.
+          </Text>
+        ) : rows.length ? (
+          rows.map((row: any, i: number) => {
+            const c = row.conversations
+            const title = c?.title ?? (c?.kind === 'group' ? 'Group conversation' : 'Conversation')
+            return (
+              <UserRow
+                key={row.conversation_id ?? i}
+                name={title}
+                username={c?.kind === 'group' ? 'Group' : 'Direct'}
+                onPress={() =>
+                  router.push({
+                    pathname: '/conversation/[id]',
+                    params: { id: row.conversation_id },
+                  })
+                }
+              />
+            )
+          })
+        ) : (
+          <EmptyState
+            title="No conversations yet"
+            message="Open a profile and start a conversation."
+          />
+        )}
+      </View>
+    </Screen>
+  )
+}

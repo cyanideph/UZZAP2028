@@ -1,2 +1,63 @@
-import {View} from "react-native"; import {Screen} from "@/components/Screen"; import {Header,LeaderboardRow,SegmentedControl,LoadingState,EmptyState,Text} from "@/components/ui"; import {useState} from "react"; import {useTheme} from "@/theme"; import {useQuery} from "@tanstack/react-query"; import {supabase} from "@/lib/supabase";
-export default function Leaderboard(){const {theme}=useTheme();const [tab,setTab]=useState("Weekly");const period=tab==="Weekly"?"7d":"all";const q=useQuery({queryKey:["leaderboard",period],queryFn:async()=>{const {data,error}=await supabase.rpc("get_engagement_leaderboard",{p_period:period,p_limit:50,p_offset:0});if(error)throw error;return data;},staleTime:60_000,refetchOnReconnect:true});const rows=Array.isArray(q.data)?q.data:(q.data?.items??[]);return <Screen><Header title="Leaderboard" subtitle="Community engagement"/><View style={{gap:16}}><SegmentedControl items={["Weekly","All time"]} value={tab} onChange={setTab}/>{q.isLoading?<LoadingState/>:q.error?<Text variant="caption" style={{color:theme.colors.danger}}>Leaderboard is temporarily unavailable.</Text>:rows.length?rows.map((r:any,i:number)=><LeaderboardRow key={r.user_id??i} rank={r.rank??i+1} name={r.display_name??r.username??"Member"} points={Number(r.points??r.score??0)}/>):<EmptyState title="No rankings yet" message="Engagement points will appear as the community becomes active."/>}</View></Screen>}
+import { View } from 'react-native'
+import { Screen } from '@/components/Screen'
+import {
+  Header,
+  LeaderboardRow,
+  SegmentedControl,
+  LoadingState,
+  EmptyState,
+  Text,
+} from '@/components/ui'
+import { useState } from 'react'
+import { useTheme } from '@/theme'
+import { useQuery } from '@tanstack/react-query'
+import { supabase } from '@/lib/supabase'
+export default function Leaderboard() {
+  const { theme } = useTheme()
+  const [tab, setTab] = useState('Weekly')
+  const period = tab === 'Weekly' ? '7d' : 'all'
+  const q = useQuery({
+    queryKey: ['leaderboard', period],
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc('get_engagement_leaderboard', {
+        p_period: period,
+        p_limit: 50,
+        p_offset: 0,
+      })
+      if (error) throw error
+      return data
+    },
+    staleTime: 60_000,
+    refetchOnReconnect: true,
+  })
+  const rows = Array.isArray(q.data) ? q.data : (q.data?.items ?? [])
+  return (
+    <Screen>
+      <Header title="Leaderboard" subtitle="Community engagement" />
+      <View style={{ gap: 16 }}>
+        <SegmentedControl items={['Weekly', 'All time']} value={tab} onChange={setTab} />
+        {q.isLoading ? (
+          <LoadingState />
+        ) : q.error ? (
+          <Text variant="caption" style={{ color: theme.colors.danger }}>
+            Leaderboard is temporarily unavailable.
+          </Text>
+        ) : rows.length ? (
+          rows.map((r: any, i: number) => (
+            <LeaderboardRow
+              key={r.user_id ?? i}
+              rank={r.rank ?? i + 1}
+              name={r.display_name ?? r.username ?? 'Member'}
+              points={Number(r.points ?? r.score ?? 0)}
+            />
+          ))
+        ) : (
+          <EmptyState
+            title="No rankings yet"
+            message="Engagement points will appear as the community becomes active."
+          />
+        )}
+      </View>
+    </Screen>
+  )
+}

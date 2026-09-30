@@ -3,7 +3,6 @@ import { Pressable, View } from 'react-native'
 import { router } from 'expo-router'
 import { Screen } from '@/components/Screen'
 import {
-  CommunityCard,
   EmptyState,
   Header,
   LoadingState,
@@ -13,6 +12,7 @@ import {
   UserRow,
 } from '@/components/ui'
 import { useContentSearch, useRoomSearch } from '@/features/discovery/hooks'
+import { CommunityCard } from '@/components/CommunityCard'
 import { useProfileSearch } from '@/features/social/hooks'
 import { useTheme } from '@/theme'
 

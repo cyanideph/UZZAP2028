@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { supabaseStorage } from '@/lib/storage/supabase'
+import type { Database } from '@/types/database.types'
 
 const url = process.env.EXPO_PUBLIC_SUPABASE_URL ?? ''
 const key =

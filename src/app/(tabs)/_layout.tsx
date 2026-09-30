@@ -1,36 +1,4 @@
-import { Tabs } from 'expo-router'
-import React from 'react'
-
-import { Colors } from '@/constants/theme'
-import { useColorScheme } from '@/hooks'
-import { IconSymbol } from '@/components/ui'
-import { HapticTab } from '@/components/ui/haptic-tab'
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme()
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  )
-}
+import {Tabs} from "expo-router";
+import {Ionicons} from "@expo/vector-icons";
+import {useTheme} from "../../src/theme";
+export default function TabsLayout(){const {theme}=useTheme();return <Tabs screenOptions={{headerShown:false,tabBarActiveTintColor:theme.colors.primary,tabBarInactiveTintColor:theme.colors.tabBarInactive,tabBarStyle:{height:64,paddingTop:7,paddingBottom:8,borderTopColor:theme.colors.border,backgroundColor:theme.colors.tabBar}}}><Tabs.Screen name="index" options={{title:"Home",tabBarIcon:({color,size})=><Ionicons name="home" color={color} size={size}/>}}/><Tabs.Screen name="communities" options={{title:"Communities",tabBarIcon:({color,size})=><Ionicons name="people" color={color} size={size}/>}}/><Tabs.Screen name="chat" options={{title:"Chat",tabBarIcon:({color,size})=><Ionicons name="chatbubbles" color={color} size={size}/>}}/><Tabs.Screen name="profile" options={{title:"Profile",tabBarIcon:({color,size})=><Ionicons name="person" color={color} size={size}/>}}/></Tabs>;}

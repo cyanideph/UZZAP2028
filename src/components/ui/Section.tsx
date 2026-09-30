@@ -1,0 +1,2 @@
+import {ReactNode} from "react"; import {View} from "react-native"; import {Text} from "./Text";
+export function Section({title,action,children}:{title:string;action?:ReactNode;children:ReactNode}){return <View style={{gap:10}}><View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}><Text variant="subtitle">{title}</Text>{action}</View>{children}</View>}

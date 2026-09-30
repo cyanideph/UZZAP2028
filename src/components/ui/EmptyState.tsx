@@ -1,0 +1,2 @@
+import {ReactNode} from "react"; import {View} from "react-native"; import {Text} from "./Text"; import {useTheme} from "../../theme";
+export function EmptyState({title,message,action,icon}:{title:string;message?:string;action?:ReactNode;icon?:ReactNode}){const {theme}=useTheme();return <View style={{alignItems:"center",justifyContent:"center",paddingVertical:48,paddingHorizontal:24,gap:10}}>{icon}{<Text variant="subtitle">{title}</Text>}{message&&<Text style={{textAlign:"center",color:theme.colors.textSecondary}}>{message}</Text>}{action}</View>}

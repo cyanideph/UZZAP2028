@@ -1,0 +1,2 @@
+import {View,ViewStyle} from "react-native"; import {useTheme} from "../../theme";
+export function Skeleton({width="100%",height=16,radius=8,style}:{width?:number|string;height?:number;radius?:number;style?:ViewStyle}){const {theme}=useTheme();return <View style={[{width,height,borderRadius:radius,backgroundColor:theme.colors.surfaceMuted},style]}/>}

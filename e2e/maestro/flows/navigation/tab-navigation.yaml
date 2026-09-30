@@ -1,4 +1,4 @@
-appId: com.app.seaguntechexpotemplate
+appId: com.cyanideph.uzzap2028
 name: Navigation - Tab Switching
 tags:
   - navigation
@@ -8,58 +8,44 @@ tags:
 - launchApp:
     clearState: true
 
-# Login first (ends on Profile tab)
 - runFlow: ../auth/login.yaml
 
-# After login.yaml, we're on Profile tab
-# Navigate to Home tab first - use index 0 for first matching element in tab bar
 - tapOn:
-    text: '.*Home.*'
+    text: 'Home'
     index: 0
 - extendedWaitUntil:
-    visible: 'Quick Actions'
+    visible: 'Discover'
     timeout: 10000
+- assertVisible: 'Discover'
 
-# Navigate to Tasks tab
 - tapOn:
-    text: '.*Tasks.*'
+    text: 'Communities'
     index: 0
 - extendedWaitUntil:
-    visible: 'Review project requirements'
-    timeout: 5000
+    visible: 'Communities'
+    timeout: 10000
+- assertVisible: 'Communities'
 
-# Navigate to AI Chat tab
 - tapOn:
-    text: '.*AI Chat.*'
+    text: 'Chat'
     index: 0
 - extendedWaitUntil:
-    visible: 'AI Chat'
-    timeout: 5000
+    visible: 'Chats'
+    timeout: 10000
+- assertVisible: 'Chats'
 
-# Navigate to Profile tab
 - tapOn:
-    text: '.*Profile.*'
+    text: 'Profile'
     index: 0
 - extendedWaitUntil:
     visible: 'Profile'
-    timeout: 5000
+    timeout: 10000
+- assertVisible: 'Profile'
 
-# Navigate to Settings tab
 - tapOn:
-    text: '.*Settings.*'
+    text: 'Home'
     index: 0
 - extendedWaitUntil:
-    visible: 'Settings'
-    timeout: 5000
-
-# Navigate back to Home
-- tapOn:
-    text: '.*Home.*'
-    index: 0
-- extendedWaitUntil:
-    visible: 'Quick Actions'
-    timeout: 5000
-
-# Verify we ended up on Home screen
-- assertVisible: 'Quick Actions'
-- assertVisible: 'Recent Activity'
+    visible: 'Discover'
+    timeout: 10000
+- assertVisible: 'Discover'

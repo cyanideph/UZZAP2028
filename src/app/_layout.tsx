@@ -3,20 +3,11 @@ import { useEffect } from 'react'
 import { AppState, Platform } from 'react-native'
 import { Stack } from 'expo-router'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { QueryClient, QueryClientProvider, focusManager } from '@tanstack/react-query'
+import { QueryClientProvider, focusManager } from '@tanstack/react-query'
 import { StatusBar } from 'expo-status-bar'
 import { AuthProvider } from '@/context/auth-context'
+import { queryClient } from '@/lib/query-client'
 import { ThemeProvider, useTheme } from '@/theme'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 2,
-      refetchOnReconnect: true,
-      refetchOnWindowFocus: false,
-    },
-  },
-})
 
 function AppShell() {
   const { isDark } = useTheme()

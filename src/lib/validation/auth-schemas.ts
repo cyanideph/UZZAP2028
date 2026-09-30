@@ -47,14 +47,14 @@ export const updatePasswordSchema = z
   })
 
 // OAuth redirect validation
-const ALLOWED_REDIRECT_SCHEMES = ['seaguntechexpotemplate://'] as const
+const ALLOWED_REDIRECT_SCHEMES = ['uzzap2028://'] as const
 
 export function validateRedirectUrl(url: string): boolean {
   return ALLOWED_REDIRECT_SCHEMES.some((scheme) => url.startsWith(scheme))
 }
 
 export function getValidatedRedirectUrl(path: string): string {
-  const redirectUrl = `seaguntechexpotemplate://${path}`
+  const redirectUrl = `uzzap2028://${path}`
   if (!validateRedirectUrl(redirectUrl)) {
     throw new Error('Invalid redirect URL')
   }

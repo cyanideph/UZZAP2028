@@ -1,11 +1,9 @@
 // Vitest setup file
 import { vi } from 'vitest'
 
-// Expo/web globals expected by native modules
 ;(globalThis as Record<string, unknown>).__DEV__ = false
 ;(globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true
 
-// Mock react-native to avoid Flow syntax parsing in Vitest
 vi.mock('react-native', async () => {
   const actual = await vi.importActual<Record<string, unknown>>('react-native-web')
 
@@ -31,7 +29,7 @@ vi.mock('react-native', async () => {
 })
 
 vi.mock('expo-linking', () => ({
-  createURL: vi.fn((path?: string) => `seaguntechexpotemplate://${path ?? ''}`),
+  createURL: vi.fn((path?: string) => `uzzap2028://${path ?? ''}`),
   parse: vi.fn(() => ({ queryParams: {} })),
 }))
 
@@ -48,7 +46,6 @@ vi.mock('@react-native-community/netinfo', () => ({
   },
 }))
 
-// Mock react-native-mmkv
 vi.mock('react-native-mmkv', () => ({
   MMKV: vi.fn().mockImplementation(() => ({
     getString: vi.fn(),
@@ -66,7 +63,6 @@ vi.mock('react-native-mmkv', () => ({
   })),
 }))
 
-// Mock @react-navigation/native
 vi.mock('@react-navigation/native', () => ({
   useNavigation: () => ({
     navigate: vi.fn(),
@@ -77,12 +73,12 @@ vi.mock('@react-navigation/native', () => ({
   }),
 }))
 
-// Mock expo-router
 vi.mock('expo-router', () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
     back: vi.fn(),
+    canGoBack: vi.fn(() => true),
   }),
   useLocalSearchParams: () => ({}),
   Link: vi.fn(),

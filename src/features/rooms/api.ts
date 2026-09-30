@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+
 export type Room = {
   id: string
   name: string
@@ -11,6 +12,7 @@ export type Room = {
   members_can_invite?: boolean
   pinned_message_id?: string | null
 }
+
 export async function listRooms(limit = 50, offset = 0): Promise<Room[]> {
   const { data, error } = await supabase.rpc('list_public_rooms', {
     p_limit: limit,
@@ -19,11 +21,13 @@ export async function listRooms(limit = 50, offset = 0): Promise<Room[]> {
   if (error) throw error
   return (data ?? []) as Room[]
 }
+
 export async function joinRoom(roomId: string) {
   const { data, error } = await supabase.rpc('join_room', { p_room_id: roomId })
   if (error) throw error
   return data
 }
+
 export async function listOnlineRoomMembers(roomId: string, limit = 50) {
   const { data, error } = await supabase.rpc('list_online_room_members', {
     p_room_id: roomId,
@@ -34,11 +38,13 @@ export async function listOnlineRoomMembers(roomId: string, limit = 50) {
   if (error) throw error
   return data ?? []
 }
+
 export async function listRoomCoHosts(roomId: string) {
   const { data, error } = await supabase.rpc('list_room_co_hosts', { p_room_id: roomId })
   if (error) throw error
   return data ?? []
 }
+
 export async function sendRoomMessage(
   roomId: string,
   body: string,
@@ -56,6 +62,7 @@ export async function sendRoomMessage(
   if (error) throw error
   return data
 }
+
 export async function replyToRoomMessage(
   roomId: string,
   messageId: string,
@@ -71,6 +78,7 @@ export async function replyToRoomMessage(
   if (error) throw error
   return data
 }
+
 export async function sendRoomSticker(
   roomId: string,
   stickerId: string,
@@ -85,6 +93,7 @@ export async function sendRoomSticker(
   if (error) throw error
   return data
 }
+
 export async function toggleRoomMessageReaction(messageId: string, reaction: string) {
   const { data, error } = await supabase.rpc('toggle_room_message_reaction', {
     p_message_id: messageId,
@@ -93,11 +102,13 @@ export async function toggleRoomMessageReaction(messageId: string, reaction: str
   if (error) throw error
   return data
 }
+
 export async function markMessageRead(messageId: string) {
   const { data, error } = await supabase.rpc('mark_message_read', { p_message_id: messageId })
   if (error) throw error
   return data
 }
+
 export async function markRoomRead(roomId: string, readAt = new Date().toISOString()) {
   const { data, error } = await supabase.rpc('mark_room_read', {
     p_room_id: roomId,
@@ -106,6 +117,7 @@ export async function markRoomRead(roomId: string, readAt = new Date().toISOStri
   if (error) throw error
   return data
 }
+
 export async function setRoomMessageMentions(messageId: string, userIds: string[]) {
   const { data, error } = await supabase.rpc('set_room_message_mentions', {
     p_message_id: messageId,
@@ -114,6 +126,7 @@ export async function setRoomMessageMentions(messageId: string, userIds: string[
   if (error) throw error
   return data
 }
+
 export async function listRoomMessages(
   roomId: string,
   beforeCreatedAt: string | null = null,
@@ -138,6 +151,7 @@ export async function setRoomPinnedMessage(roomId: string, messageId: string | n
   if (error) throw error
   return data
 }
+
 export async function setRoomLock(roomId: string, locked: boolean, reason: string | null = null) {
   const { data, error } = await supabase.rpc('set_room_lock', {
     p_room_id: roomId,
@@ -147,6 +161,7 @@ export async function setRoomLock(roomId: string, locked: boolean, reason: strin
   if (error) throw error
   return data
 }
+
 export async function setRoomChatSettings(
   roomId: string,
   announcement: string | null,
@@ -162,6 +177,7 @@ export async function setRoomChatSettings(
   if (error) throw error
   return data
 }
+
 export async function moderateRoomMember(
   roomId: string,
   targetUserId: string,
@@ -179,6 +195,7 @@ export async function moderateRoomMember(
   if (error) throw error
   return data
 }
+
 export async function kickRoomMember(
   roomId: string,
   targetUserId: string,
@@ -194,6 +211,7 @@ export async function kickRoomMember(
   if (error) throw error
   return data
 }
+
 export async function moderateRoomMessage(messageId: string, action: string, reason: string) {
   const { data, error } = await supabase.rpc('moderate_room_message', {
     p_message_id: messageId,
@@ -203,6 +221,7 @@ export async function moderateRoomMessage(messageId: string, action: string, rea
   if (error) throw error
   return data
 }
+
 export async function strikeRoomMember(
   roomId: string,
   targetUserId: string,
@@ -218,6 +237,7 @@ export async function strikeRoomMember(
   if (error) throw error
   return data
 }
+
 export async function listRoomReports(
   roomId: string,
   status: string = 'open',
@@ -233,6 +253,7 @@ export async function listRoomReports(
   if (error) throw error
   return data ?? []
 }
+
 export async function createRoomReport(
   roomId: string,
   messageId: string | null,
@@ -249,10 +270,15 @@ export async function createRoomReport(
 }
 
 export async function getMyRoomMembership(roomId: string) {
+  const { data: userData, error: userError } = await supabase.auth.getUser()
+  if (userError) throw userError
+  if (!userData.user) return null
+
   const { data, error } = await supabase
     .from('room_members')
     .select('room_id,user_id,role,nickname,chat_notifications_enabled,is_pinned')
     .eq('room_id', roomId)
+    .eq('user_id', userData.user.id)
     .maybeSingle()
   if (error) throw error
   return data
@@ -267,6 +293,7 @@ export async function listRoomMembers(roomId: string, limit = 100, offset = 0) {
   if (error) throw error
   return data ?? []
 }
+
 export async function listRoomCoHostRequests(roomId: string, status?: string) {
   let query = supabase
     .from('room_co_host_requests')
@@ -278,6 +305,7 @@ export async function listRoomCoHostRequests(roomId: string, status?: string) {
   if (error) throw error
   return data ?? []
 }
+
 export async function setRoomCoHost(roomId: string, targetUserId: string, enabled: boolean) {
   const { data, error } = await supabase.rpc('set_room_co_host', {
     p_room_id: roomId,
@@ -287,6 +315,7 @@ export async function setRoomCoHost(roomId: string, targetUserId: string, enable
   if (error) throw error
   return data
 }
+
 export async function requestRoomCoHost(roomId: string, targetUserId: string) {
   const { data, error } = await supabase.rpc('request_room_co_host', {
     p_room_id: roomId,
@@ -295,6 +324,7 @@ export async function requestRoomCoHost(roomId: string, targetUserId: string) {
   if (error) throw error
   return data
 }
+
 export async function acceptRoomCoHostRequest(requestId: string) {
   const { data, error } = await supabase.rpc('accept_room_co_host_request', {
     p_request_id: requestId,
@@ -302,6 +332,7 @@ export async function acceptRoomCoHostRequest(requestId: string) {
   if (error) throw error
   return data
 }
+
 export async function declineRoomCoHostRequest(requestId: string) {
   const { data, error } = await supabase.rpc('decline_room_co_host_request', {
     p_request_id: requestId,
@@ -309,6 +340,7 @@ export async function declineRoomCoHostRequest(requestId: string) {
   if (error) throw error
   return data
 }
+
 export async function cancelRoomCoHostRequest(requestId: string) {
   const { data, error } = await supabase.rpc('cancel_room_co_host_request', {
     p_request_id: requestId,

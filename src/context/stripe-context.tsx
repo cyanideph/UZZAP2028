@@ -24,8 +24,8 @@ const StripeContext = createContext<StripeContextValue | null>(null)
 
 // Stripe publishable key - to be set in environment
 const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ''
-const MERCHANT_IDENTIFIER = process.env.EXPO_PUBLIC_MERCHANT_IDENTIFIER ?? 'merchant.com.seaguntech'
-const URL_SCHEME = process.env.EXPO_PUBLIC_URL_SCHEME ?? 'seaguntechexpotemplate'
+const MERCHANT_IDENTIFIER = process.env.EXPO_PUBLIC_MERCHANT_IDENTIFIER ?? 'merchant.com.cyanideph.uzzap2028'
+const URL_SCHEME = process.env.EXPO_PUBLIC_URL_SCHEME ?? 'uzzap2028'
 
 interface StripeProviderProps {
   children: ReactNode

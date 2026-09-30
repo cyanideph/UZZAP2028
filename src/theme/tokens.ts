@@ -135,4 +135,4 @@ export const darkTheme = {
   ...shared,
 }
 
-export type AppTheme = typeof lightTheme
+export type AppTheme = typeof lightTheme | typeof darkTheme

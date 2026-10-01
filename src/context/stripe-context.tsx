@@ -23,8 +23,7 @@ import {
 const StripeContext = createContext<StripeContextValue | null>(null)
 
 // Stripe publishable key - to be set in environment
-const STRIPE_PUBLISHABLE_KEY =
-  process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ''
+const STRIPE_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? ''
 const MERCHANT_IDENTIFIER =
   process.env.EXPO_PUBLIC_MERCHANT_IDENTIFIER ?? 'merchant.com.cyanideph.uzzap2028'
 const URL_SCHEME = process.env.EXPO_PUBLIC_URL_SCHEME ?? 'uzzap2028'
@@ -38,8 +37,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { initPaymentSheet, presentPaymentSheet: presentSheet } =
-    usePaymentSheet()
+  const { initPaymentSheet, presentPaymentSheet: presentSheet } = usePaymentSheet()
   const { confirmPayment: confirmStripePayment } = useConfirmPayment()
 
   // Mark as initialized once mounted
@@ -52,19 +50,14 @@ function StripeContextProvider({ children }: StripeProviderProps) {
   }, [])
 
   const createPaymentIntent = useCallback(
-    async (
-      request: CreatePaymentIntentRequest,
-    ): Promise<CreatePaymentIntentResponse> => {
+    async (request: CreatePaymentIntentRequest): Promise<CreatePaymentIntentResponse> => {
       setIsLoading(true)
       setError(null)
 
       try {
-        const { data, error: fnError } = await supabase.functions.invoke(
-          'create-payment-intent',
-          {
-            body: request,
-          },
-        )
+        const { data, error: fnError } = await supabase.functions.invoke('create-payment-intent', {
+          body: request,
+        })
 
         if (fnError) throw fnError
         if (!data?.clientSecret) throw new Error('No client secret returned')
@@ -91,8 +84,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
           paymentIntentId: data.paymentIntentId,
         }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Failed to create payment intent'
+        const errorMessage = err instanceof Error ? err.message : 'Failed to create payment intent'
         setError(errorMessage)
         throw err
       } finally {
@@ -119,8 +111,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
 
         return { success: true }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Payment failed'
+        const errorMessage = err instanceof Error ? err.message : 'Payment failed'
         setError(errorMessage)
         return { success: false, error: errorMessage }
       } finally {
@@ -136,10 +127,9 @@ function StripeContextProvider({ children }: StripeProviderProps) {
       setError(null)
 
       try {
-        const { paymentIntent, error: confirmError } =
-          await confirmStripePayment(clientSecret, {
-            paymentMethodType: 'Card',
-          })
+        const { paymentIntent, error: confirmError } = await confirmStripePayment(clientSecret, {
+          paymentMethodType: 'Card',
+        })
 
         if (confirmError) throw new Error(confirmError.message)
 
@@ -148,8 +138,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
           paymentIntentId: paymentIntent?.id,
         }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Payment confirmation failed'
+        const errorMessage = err instanceof Error ? err.message : 'Payment confirmation failed'
         setError(errorMessage)
         return { success: false, error: errorMessage }
       } finally {
@@ -168,19 +157,10 @@ function StripeContextProvider({ children }: StripeProviderProps) {
       presentPaymentSheet,
       confirmPayment,
     }),
-    [
-      isInitialized,
-      isLoading,
-      error,
-      createPaymentIntent,
-      presentPaymentSheet,
-      confirmPayment,
-    ],
+    [isInitialized, isLoading, error, createPaymentIntent, presentPaymentSheet, confirmPayment],
   )
 
-  return (
-    <StripeContext.Provider value={value}>{children}</StripeContext.Provider>
-  )
+  return <StripeContext.Provider value={value}>{children}</StripeContext.Provider>
 }
 
 export function StripeProvider({ children }: StripeProviderProps) {

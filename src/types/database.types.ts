@@ -1,10 +1,16 @@
-export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
 
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: '14.5'
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -41,11 +47,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_categories_created_by_fkey'
-            columns: ['created_by']
+            foreignKeyName: "content_categories_created_by_fkey"
+            columns: ["created_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -67,18 +73,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_category_items_category_id_fkey'
-            columns: ['category_id']
+            foreignKeyName: "content_category_items_category_id_fkey"
+            columns: ["category_id"]
             isOneToOne: false
-            referencedRelation: 'content_categories'
-            referencedColumns: ['id']
+            referencedRelation: "content_categories"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_category_items_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "content_category_items_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -103,18 +109,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_comment_votes_comment_id_fkey'
-            columns: ['comment_id']
+            foreignKeyName: "content_comment_votes_comment_id_fkey"
+            columns: ["comment_id"]
             isOneToOne: false
-            referencedRelation: 'content_comments'
-            referencedColumns: ['id']
+            referencedRelation: "content_comments"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_comment_votes_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "content_comment_votes_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -151,25 +157,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_comments_author_id_fkey'
-            columns: ['author_id']
+            foreignKeyName: "content_comments_author_id_fkey"
+            columns: ["author_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_comments_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "content_comments_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_comments_parent_id_fkey'
-            columns: ['parent_id']
+            foreignKeyName: "content_comments_parent_id_fkey"
+            columns: ["parent_id"]
             isOneToOne: false
-            referencedRelation: 'content_comments'
-            referencedColumns: ['id']
+            referencedRelation: "content_comments"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -194,18 +200,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_reactions_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "content_reactions_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_reactions_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "content_reactions_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -227,18 +233,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'content_saves_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "content_saves_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'content_saves_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "content_saves_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -287,18 +293,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'contents_author_id_fkey'
-            columns: ['author_id']
+            foreignKeyName: "contents_author_id_fkey"
+            columns: ["author_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'contents_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "contents_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -332,25 +338,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'conversation_invites_conversation_id_fkey'
-            columns: ['conversation_id']
+            foreignKeyName: "conversation_invites_conversation_id_fkey"
+            columns: ["conversation_id"]
             isOneToOne: false
-            referencedRelation: 'conversations'
-            referencedColumns: ['id']
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'conversation_invites_invitee_id_fkey'
-            columns: ['invitee_id']
+            foreignKeyName: "conversation_invites_invitee_id_fkey"
+            columns: ["invitee_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'conversation_invites_inviter_id_fkey'
-            columns: ['inviter_id']
+            foreignKeyName: "conversation_invites_inviter_id_fkey"
+            columns: ["inviter_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -359,37 +365,37 @@ export type Database = {
           conversation_id: string
           joined_at: string
           last_read_at: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           user_id: string
         }
         Insert: {
           conversation_id: string
           joined_at?: string
           last_read_at?: string | null
-          role?: Database['public']['Enums']['member_role']
+          role?: Database["public"]["Enums"]["member_role"]
           user_id: string
         }
         Update: {
           conversation_id?: string
           joined_at?: string
           last_read_at?: string | null
-          role?: Database['public']['Enums']['member_role']
+          role?: Database["public"]["Enums"]["member_role"]
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'conversation_members_conversation_id_fkey'
-            columns: ['conversation_id']
+            foreignKeyName: "conversation_members_conversation_id_fkey"
+            columns: ["conversation_id"]
             isOneToOne: false
-            referencedRelation: 'conversations'
-            referencedColumns: ['id']
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'conversation_members_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "conversation_members_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -401,7 +407,7 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           sender_id: string
@@ -413,7 +419,7 @@ export type Database = {
           deleted_at?: string | null
           edited_at?: string | null
           id?: string
-          kind?: Database['public']['Enums']['message_kind']
+          kind?: Database["public"]["Enums"]["message_kind"]
           metadata?: Json
           reply_to_id?: string | null
           sender_id: string
@@ -425,32 +431,32 @@ export type Database = {
           deleted_at?: string | null
           edited_at?: string | null
           id?: string
-          kind?: Database['public']['Enums']['message_kind']
+          kind?: Database["public"]["Enums"]["message_kind"]
           metadata?: Json
           reply_to_id?: string | null
           sender_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'conversation_messages_conversation_id_fkey'
-            columns: ['conversation_id']
+            foreignKeyName: "conversation_messages_conversation_id_fkey"
+            columns: ["conversation_id"]
             isOneToOne: false
-            referencedRelation: 'conversations'
-            referencedColumns: ['id']
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'conversation_messages_reply_to_id_fkey'
-            columns: ['reply_to_id']
+            foreignKeyName: "conversation_messages_reply_to_id_fkey"
+            columns: ["reply_to_id"]
             isOneToOne: false
-            referencedRelation: 'conversation_messages'
-            referencedColumns: ['id']
+            referencedRelation: "conversation_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'conversation_messages_sender_id_fkey'
-            columns: ['sender_id']
+            foreignKeyName: "conversation_messages_sender_id_fkey"
+            columns: ["sender_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -459,7 +465,7 @@ export type Database = {
           created_at: string
           created_by: string
           id: string
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           title: string | null
           updated_at: string
         }
@@ -467,7 +473,7 @@ export type Database = {
           created_at?: string
           created_by: string
           id?: string
-          kind?: Database['public']['Enums']['room_kind']
+          kind?: Database["public"]["Enums"]["room_kind"]
           title?: string | null
           updated_at?: string
         }
@@ -475,17 +481,17 @@ export type Database = {
           created_at?: string
           created_by?: string
           id?: string
-          kind?: Database['public']['Enums']['room_kind']
+          kind?: Database["public"]["Enums"]["room_kind"]
           title?: string | null
           updated_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'conversations_created_by_fkey'
-            columns: ['created_by']
+            foreignKeyName: "conversations_created_by_fkey"
+            columns: ["created_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -516,18 +522,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'featured_profiles_featured_by_fkey'
-            columns: ['featured_by']
+            foreignKeyName: "featured_profiles_featured_by_fkey"
+            columns: ["featured_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'featured_profiles_profile_id_fkey'
-            columns: ['profile_id']
+            foreignKeyName: "featured_profiles_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: true
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -591,32 +597,32 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'media_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "media_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'media_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "media_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'media_owner_id_fkey'
-            columns: ['owner_id']
+            foreignKeyName: "media_owner_id_fkey"
+            columns: ["owner_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'media_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "media_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -635,18 +641,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'message_mentions_mentioned_user_id_fkey'
-            columns: ['mentioned_user_id']
+            foreignKeyName: "message_mentions_mentioned_user_id_fkey"
+            columns: ["mentioned_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'message_mentions_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "message_mentions_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -671,18 +677,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'message_reactions_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "message_reactions_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'message_reactions_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "message_reactions_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -704,18 +710,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'message_reads_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "message_reads_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'message_reads_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "message_reads_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -734,24 +740,24 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'message_replies_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "message_replies_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: true
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'message_replies_reply_to_message_id_fkey'
-            columns: ['reply_to_message_id']
+            foreignKeyName: "message_replies_reply_to_message_id_fkey"
+            columns: ["reply_to_message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
         ]
       }
       moderation_actions: {
         Row: {
-          action: Database['public']['Enums']['moderation_action_kind']
+          action: Database["public"]["Enums"]["moderation_action_kind"]
           created_at: string
           id: string
           metadata: Json
@@ -762,7 +768,7 @@ export type Database = {
           target_user_id: string | null
         }
         Insert: {
-          action: Database['public']['Enums']['moderation_action_kind']
+          action: Database["public"]["Enums"]["moderation_action_kind"]
           created_at?: string
           id?: string
           metadata?: Json
@@ -773,7 +779,7 @@ export type Database = {
           target_user_id?: string | null
         }
         Update: {
-          action?: Database['public']['Enums']['moderation_action_kind']
+          action?: Database["public"]["Enums"]["moderation_action_kind"]
           created_at?: string
           id?: string
           metadata?: Json
@@ -785,32 +791,32 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'moderation_actions_moderator_id_fkey'
-            columns: ['moderator_id']
+            foreignKeyName: "moderation_actions_moderator_id_fkey"
+            columns: ["moderator_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'moderation_actions_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "moderation_actions_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'moderation_actions_target_message_id_fkey'
-            columns: ['target_message_id']
+            foreignKeyName: "moderation_actions_target_message_id_fkey"
+            columns: ["target_message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'moderation_actions_target_user_id_fkey'
-            columns: ['target_user_id']
+            foreignKeyName: "moderation_actions_target_user_id_fkey"
+            columns: ["target_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -862,11 +868,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'notification_preferences_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "notification_preferences_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: true
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -900,18 +906,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'notifications_actor_id_fkey'
-            columns: ['actor_id']
+            foreignKeyName: "notifications_actor_id_fkey"
+            columns: ["actor_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'notifications_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -936,11 +942,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'poll_options_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "poll_options_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -965,25 +971,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'poll_votes_content_id_fkey'
-            columns: ['content_id']
+            foreignKeyName: "poll_votes_content_id_fkey"
+            columns: ["content_id"]
             isOneToOne: false
-            referencedRelation: 'contents'
-            referencedColumns: ['id']
+            referencedRelation: "contents"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'poll_votes_option_id_fkey'
-            columns: ['option_id']
+            foreignKeyName: "poll_votes_option_id_fkey"
+            columns: ["option_id"]
             isOneToOne: false
-            referencedRelation: 'poll_options'
-            referencedColumns: ['id']
+            referencedRelation: "poll_options"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'poll_votes_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "poll_votes_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1008,18 +1014,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'profile_comment_votes_comment_id_fkey'
-            columns: ['comment_id']
+            foreignKeyName: "profile_comment_votes_comment_id_fkey"
+            columns: ["comment_id"]
             isOneToOne: false
-            referencedRelation: 'profile_comments'
-            referencedColumns: ['id']
+            referencedRelation: "profile_comments"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'profile_comment_votes_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "profile_comment_votes_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1056,25 +1062,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'profile_comments_author_id_fkey'
-            columns: ['author_id']
+            foreignKeyName: "profile_comments_author_id_fkey"
+            columns: ["author_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'profile_comments_parent_id_fkey'
-            columns: ['parent_id']
+            foreignKeyName: "profile_comments_parent_id_fkey"
+            columns: ["parent_id"]
             isOneToOne: false
-            referencedRelation: 'profile_comments'
-            referencedColumns: ['id']
+            referencedRelation: "profile_comments"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'profile_comments_profile_id_fkey'
-            columns: ['profile_id']
+            foreignKeyName: "profile_comments_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1099,18 +1105,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'profile_visits_profile_id_fkey'
-            columns: ['profile_id']
+            foreignKeyName: "profile_visits_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'profile_visits_visitor_id_fkey'
-            columns: ['visitor_id']
+            foreignKeyName: "profile_visits_visitor_id_fkey"
+            columns: ["visitor_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1156,36 +1162,36 @@ export type Database = {
       relationships: {
         Row: {
           created_at: string
-          kind: Database['public']['Enums']['relationship_kind']
+          kind: Database["public"]["Enums"]["relationship_kind"]
           target_user_id: string
           user_id: string
         }
         Insert: {
           created_at?: string
-          kind: Database['public']['Enums']['relationship_kind']
+          kind: Database["public"]["Enums"]["relationship_kind"]
           target_user_id: string
           user_id: string
         }
         Update: {
           created_at?: string
-          kind?: Database['public']['Enums']['relationship_kind']
+          kind?: Database["public"]["Enums"]["relationship_kind"]
           target_user_id?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'relationships_target_user_id_fkey'
-            columns: ['target_user_id']
+            foreignKeyName: "relationships_target_user_id_fkey"
+            columns: ["target_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'relationships_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "relationships_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1201,7 +1207,7 @@ export type Database = {
           resolved_at: string | null
           resolved_by: string | null
           room_id: string | null
-          status: Database['public']['Enums']['report_status']
+          status: Database["public"]["Enums"]["report_status"]
         }
         Insert: {
           created_at?: string
@@ -1214,7 +1220,7 @@ export type Database = {
           resolved_at?: string | null
           resolved_by?: string | null
           room_id?: string | null
-          status?: Database['public']['Enums']['report_status']
+          status?: Database["public"]["Enums"]["report_status"]
         }
         Update: {
           created_at?: string
@@ -1227,43 +1233,43 @@ export type Database = {
           resolved_at?: string | null
           resolved_by?: string | null
           room_id?: string | null
-          status?: Database['public']['Enums']['report_status']
+          status?: Database["public"]["Enums"]["report_status"]
         }
         Relationships: [
           {
-            foreignKeyName: 'reports_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "reports_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'reports_reported_user_id_fkey'
-            columns: ['reported_user_id']
+            foreignKeyName: "reports_reported_user_id_fkey"
+            columns: ["reported_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'reports_reporter_id_fkey'
-            columns: ['reporter_id']
+            foreignKeyName: "reports_reporter_id_fkey"
+            columns: ["reporter_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'reports_resolved_by_fkey'
-            columns: ['resolved_by']
+            foreignKeyName: "reports_resolved_by_fkey"
+            columns: ["resolved_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'reports_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "reports_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1297,25 +1303,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_co_host_requests_requester_id_fkey'
-            columns: ['requester_id']
+            foreignKeyName: "room_co_host_requests_requester_id_fkey"
+            columns: ["requester_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_co_host_requests_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_co_host_requests_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_co_host_requests_target_user_id_fkey'
-            columns: ['target_user_id']
+            foreignKeyName: "room_co_host_requests_target_user_id_fkey"
+            columns: ["target_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1340,25 +1346,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_co_hosts_assigned_by_fkey'
-            columns: ['assigned_by']
+            foreignKeyName: "room_co_hosts_assigned_by_fkey"
+            columns: ["assigned_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_co_hosts_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_co_hosts_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_co_hosts_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "room_co_hosts_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1392,25 +1398,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_invites_invitee_id_fkey'
-            columns: ['invitee_id']
+            foreignKeyName: "room_invites_invitee_id_fkey"
+            columns: ["invitee_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_invites_inviter_id_fkey'
-            columns: ['inviter_id']
+            foreignKeyName: "room_invites_inviter_id_fkey"
+            columns: ["inviter_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_invites_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_invites_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1444,25 +1450,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_member_strikes_issued_by_fkey'
-            columns: ['issued_by']
+            foreignKeyName: "room_member_strikes_issued_by_fkey"
+            columns: ["issued_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_member_strikes_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_member_strikes_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_member_strikes_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "room_member_strikes_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1476,7 +1482,7 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
@@ -1489,7 +1495,7 @@ export type Database = {
           last_seen_at?: string | null
           muted_until?: string | null
           nickname?: string | null
-          role?: Database['public']['Enums']['member_role']
+          role?: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
@@ -1502,24 +1508,24 @@ export type Database = {
           last_seen_at?: string | null
           muted_until?: string | null
           nickname?: string | null
-          role?: Database['public']['Enums']['member_role']
+          role?: Database["public"]["Enums"]["member_role"]
           room_id?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'room_members_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_members_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_members_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "room_members_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1544,18 +1550,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_message_reactions_message_id_fkey'
-            columns: ['message_id']
+            foreignKeyName: "room_message_reactions_message_id_fkey"
+            columns: ["message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_message_reactions_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "room_message_reactions_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1566,7 +1572,7 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
@@ -1578,7 +1584,7 @@ export type Database = {
           deleted_at?: string | null
           edited_at?: string | null
           id?: string
-          kind?: Database['public']['Enums']['message_kind']
+          kind?: Database["public"]["Enums"]["message_kind"]
           metadata?: Json
           reply_to_id?: string | null
           room_id: string
@@ -1590,7 +1596,7 @@ export type Database = {
           deleted_at?: string | null
           edited_at?: string | null
           id?: string
-          kind?: Database['public']['Enums']['message_kind']
+          kind?: Database["public"]["Enums"]["message_kind"]
           metadata?: Json
           reply_to_id?: string | null
           room_id?: string
@@ -1598,25 +1604,25 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'room_messages_reply_to_id_fkey'
-            columns: ['reply_to_id']
+            foreignKeyName: "room_messages_reply_to_id_fkey"
+            columns: ["reply_to_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_messages_room_id_fkey'
-            columns: ['room_id']
+            foreignKeyName: "room_messages_room_id_fkey"
+            columns: ["room_id"]
             isOneToOne: false
-            referencedRelation: 'rooms'
-            referencedColumns: ['id']
+            referencedRelation: "rooms"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'room_messages_sender_id_fkey'
-            columns: ['sender_id']
+            foreignKeyName: "room_messages_sender_id_fkey"
+            columns: ["sender_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1629,7 +1635,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -1646,7 +1652,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           is_locked?: boolean
-          kind?: Database['public']['Enums']['room_kind']
+          kind?: Database["public"]["Enums"]["room_kind"]
           members_can_invite?: boolean
           name: string
           pinned_message_id?: string | null
@@ -1663,7 +1669,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           is_locked?: boolean
-          kind?: Database['public']['Enums']['room_kind']
+          kind?: Database["public"]["Enums"]["room_kind"]
           members_can_invite?: boolean
           name?: string
           pinned_message_id?: string | null
@@ -1674,18 +1680,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'rooms_created_by_fkey'
-            columns: ['created_by']
+            foreignKeyName: "rooms_created_by_fkey"
+            columns: ["created_by"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'rooms_pinned_message_id_fkey'
-            columns: ['pinned_message_id']
+            foreignKeyName: "rooms_pinned_message_id_fkey"
+            columns: ["pinned_message_id"]
             isOneToOne: false
-            referencedRelation: 'room_messages'
-            referencedColumns: ['id']
+            referencedRelation: "room_messages"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1713,11 +1719,11 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'user_check_ins_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "user_check_ins_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1739,18 +1745,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: 'user_favorites_target_user_id_fkey'
-            columns: ['target_user_id']
+            foreignKeyName: "user_favorites_target_user_id_fkey"
+            columns: ["target_user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
           {
-            foreignKeyName: 'user_favorites_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "user_favorites_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -1759,19 +1765,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_content_poll_results: {
-        Args: { p_content_id: string }
-        Returns: Json
-      }
-      list_content_comments: {
-        Args: {
-          p_before_created_at?: string | null
-          p_before_id?: string | null
-          p_content_id: string
-          p_limit?: number
-        }
-        Returns: Json
-      }
       accept_room_co_host_request: {
         Args: { p_request_id: string }
         Returns: {
@@ -1784,8 +1777,8 @@ export type Database = {
           target_user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_co_host_requests'
+          from: "*"
+          to: "room_co_host_requests"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1803,8 +1796,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'content_comments'
+          from: "*"
+          to: "content_comments"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1822,8 +1815,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'profile_comments'
+          from: "*"
+          to: "profile_comments"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1854,8 +1847,8 @@ export type Database = {
           width: number | null
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'media'
+          from: "*"
+          to: "media"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -1872,8 +1865,8 @@ export type Database = {
           target_user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_co_host_requests'
+          from: "*"
+          to: "room_co_host_requests"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1903,8 +1896,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'contents'
+          from: "*"
+          to: "contents"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1927,15 +1920,15 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'content_categories'
+          from: "*"
+          to: "content_categories"
           isOneToOne: true
           isSetofReturn: false
         }
       }
       create_conversation: {
         Args: {
-          p_kind: Database['public']['Enums']['room_kind']
+          p_kind: Database["public"]["Enums"]["room_kind"]
           p_member_ids?: string[]
           p_title?: string
         }
@@ -1943,13 +1936,13 @@ export type Database = {
           created_at: string
           created_by: string
           id: string
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           title: string | null
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversations'
+          from: "*"
+          to: "conversations"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1966,8 +1959,8 @@ export type Database = {
           inviter_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_invites'
+          from: "*"
+          to: "conversation_invites"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -1975,7 +1968,7 @@ export type Database = {
       create_room: {
         Args: {
           p_description?: string
-          p_kind?: Database['public']['Enums']['room_kind']
+          p_kind?: Database["public"]["Enums"]["room_kind"]
           p_name: string
           p_province_code?: string
           p_slug: string
@@ -1988,7 +1981,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -1998,8 +1991,8 @@ export type Database = {
           view_only: boolean
         }
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2016,8 +2009,8 @@ export type Database = {
           room_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_invites'
+          from: "*"
+          to: "room_invites"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2034,8 +2027,8 @@ export type Database = {
           target_user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_co_host_requests'
+          from: "*"
+          to: "room_co_host_requests"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2054,14 +2047,14 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_messages'
+          from: "*"
+          to: "conversation_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2082,15 +2075,15 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_messages'
+          from: "*"
+          to: "room_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2117,8 +2110,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'contents'
+          from: "*"
+          to: "contents"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2132,14 +2125,14 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_messages'
+          from: "*"
+          to: "conversation_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2152,18 +2145,22 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_messages'
+          from: "*"
+          to: "room_messages"
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      get_content_poll_results: {
+        Args: { p_content_id: string }
+        Returns: Json
       }
       get_engagement_leaderboard: {
         Args: { p_limit?: number; p_offset?: number; p_period?: string }
@@ -2187,8 +2184,8 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'notification_preferences'
+          from: "*"
+          to: "notification_preferences"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2204,13 +2201,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2223,7 +2220,7 @@ export type Database = {
           p_target_user_id: string
         }
         Returns: {
-          action: Database['public']['Enums']['moderation_action_kind']
+          action: Database["public"]["Enums"]["moderation_action_kind"]
           created_at: string
           id: string
           metadata: Json
@@ -2234,8 +2231,8 @@ export type Database = {
           target_user_id: string | null
         }
         SetofOptions: {
-          from: '*'
-          to: 'moderation_actions'
+          from: "*"
+          to: "moderation_actions"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2245,13 +2242,13 @@ export type Database = {
         Args: { p_limit?: number }
         Returns: {
           created_at: string
-          kind: Database['public']['Enums']['relationship_kind']
+          kind: Database["public"]["Enums"]["relationship_kind"]
           target_user_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'relationships'
+          from: "*"
+          to: "relationships"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2268,6 +2265,15 @@ export type Database = {
       list_content_categories: { Args: { p_kind?: string }; Returns: Json }
       list_content_comment_votes: {
         Args: { p_comment_id: string }
+        Returns: Json
+      }
+      list_content_comments: {
+        Args: {
+          p_before_created_at?: string
+          p_before_id?: string
+          p_content_id: string
+          p_limit?: number
+        }
         Returns: Json
       }
       list_content_feed: {
@@ -2308,13 +2314,13 @@ export type Database = {
         Args: { p_limit?: number; p_user_id: string }
         Returns: {
           created_at: string
-          kind: Database['public']['Enums']['relationship_kind']
+          kind: Database["public"]["Enums"]["relationship_kind"]
           target_user_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'relationships'
+          from: "*"
+          to: "relationships"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2323,13 +2329,13 @@ export type Database = {
         Args: { p_limit?: number; p_user_id: string }
         Returns: {
           created_at: string
-          kind: Database['public']['Enums']['relationship_kind']
+          kind: Database["public"]["Enums"]["relationship_kind"]
           target_user_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'relationships'
+          from: "*"
+          to: "relationships"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2366,7 +2372,7 @@ export type Database = {
           is_online: boolean
           last_seen_at: string
           nickname: string
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           user_id: string
         }[]
       }
@@ -2400,8 +2406,8 @@ export type Database = {
           visitor_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'profile_visits'
+          from: "*"
+          to: "profile_visits"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2430,7 +2436,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -2440,8 +2446,8 @@ export type Database = {
           view_only: boolean
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2457,13 +2463,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2488,13 +2494,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2519,13 +2525,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2535,7 +2541,7 @@ export type Database = {
           p_limit?: number
           p_offset?: number
           p_room_id: string
-          p_status?: Database['public']['Enums']['report_status']
+          p_status?: Database["public"]["Enums"]["report_status"]
         }
         Returns: {
           created_at: string
@@ -2548,11 +2554,11 @@ export type Database = {
           resolved_at: string | null
           resolved_by: string | null
           room_id: string | null
-          status: Database['public']['Enums']['report_status']
+          status: Database["public"]["Enums"]["report_status"]
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'reports'
+          from: "*"
+          to: "reports"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2564,12 +2570,12 @@ export type Database = {
           conversation_id: string
           joined_at: string
           last_read_at: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_members'
+          from: "*"
+          to: "conversation_members"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2587,8 +2593,8 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'notifications'
+          from: "*"
+          to: "notifications"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2604,27 +2610,27 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: true
           isSetofReturn: false
         }
       }
       moderate_room_member: {
         Args: {
-          p_action: Database['public']['Enums']['moderation_action_kind']
+          p_action: Database["public"]["Enums"]["moderation_action_kind"]
           p_duration_minutes?: number
           p_reason?: string
           p_room_id: string
           p_target_user_id: string
         }
         Returns: {
-          action: Database['public']['Enums']['moderation_action_kind']
+          action: Database["public"]["Enums"]["moderation_action_kind"]
           created_at: string
           id: string
           metadata: Json
@@ -2635,20 +2641,20 @@ export type Database = {
           target_user_id: string | null
         }
         SetofOptions: {
-          from: '*'
-          to: 'moderation_actions'
+          from: "*"
+          to: "moderation_actions"
           isOneToOne: true
           isSetofReturn: false
         }
       }
       moderate_room_message: {
         Args: {
-          p_action: Database['public']['Enums']['moderation_action_kind']
+          p_action: Database["public"]["Enums"]["moderation_action_kind"]
           p_message_id: string
           p_reason?: string
         }
         Returns: {
-          action: Database['public']['Enums']['moderation_action_kind']
+          action: Database["public"]["Enums"]["moderation_action_kind"]
           created_at: string
           id: string
           metadata: Json
@@ -2659,8 +2665,8 @@ export type Database = {
           target_user_id: string | null
         }
         SetofOptions: {
-          from: '*'
-          to: 'moderation_actions'
+          from: "*"
+          to: "moderation_actions"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2674,8 +2680,8 @@ export type Database = {
           visitor_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'profile_visits'
+          from: "*"
+          to: "profile_visits"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2702,14 +2708,14 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_messages'
+          from: "*"
+          to: "conversation_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2727,15 +2733,15 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_messages'
+          from: "*"
+          to: "room_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2757,8 +2763,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'contents'
+          from: "*"
+          to: "contents"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2775,8 +2781,8 @@ export type Database = {
           target_user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_co_host_requests'
+          from: "*"
+          to: "room_co_host_requests"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2793,8 +2799,8 @@ export type Database = {
           inviter_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_invites'
+          from: "*"
+          to: "conversation_invites"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2811,8 +2817,8 @@ export type Database = {
           room_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_invites'
+          from: "*"
+          to: "room_invites"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2841,8 +2847,8 @@ export type Database = {
           username: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'profiles'
+          from: "*"
+          to: "profiles"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2871,7 +2877,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -2881,8 +2887,8 @@ export type Database = {
           view_only: boolean
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -2891,7 +2897,7 @@ export type Database = {
         Args: {
           p_body: string
           p_conversation_id: string
-          p_kind?: Database['public']['Enums']['message_kind']
+          p_kind?: Database["public"]["Enums"]["message_kind"]
           p_metadata?: Json
           p_reply_to_id?: string
         }
@@ -2902,14 +2908,14 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'conversation_messages'
+          from: "*"
+          to: "conversation_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2917,7 +2923,7 @@ export type Database = {
       send_room_message: {
         Args: {
           p_body: string
-          p_kind?: Database['public']['Enums']['message_kind']
+          p_kind?: Database["public"]["Enums"]["message_kind"]
           p_metadata?: Json
           p_reply_to_id?: string
           p_room_id: string
@@ -2928,15 +2934,15 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_messages'
+          from: "*"
+          to: "room_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2954,15 +2960,15 @@ export type Database = {
           deleted_at: string | null
           edited_at: string | null
           id: string
-          kind: Database['public']['Enums']['message_kind']
+          kind: Database["public"]["Enums"]["message_kind"]
           metadata: Json
           reply_to_id: string | null
           room_id: string
           sender_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_messages'
+          from: "*"
+          to: "room_messages"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -2984,8 +2990,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'contents'
+          from: "*"
+          to: "contents"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3007,8 +3013,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'contents'
+          from: "*"
+          to: "contents"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3024,8 +3030,8 @@ export type Database = {
           updated_at: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'featured_profiles'
+          from: "*"
+          to: "featured_profiles"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3059,8 +3065,8 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'notification_preferences'
+          from: "*"
+          to: "notification_preferences"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3080,7 +3086,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -3090,8 +3096,8 @@ export type Database = {
           view_only: boolean
         }
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3109,8 +3115,8 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_co_hosts'
+          from: "*"
+          to: "room_co_hosts"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3125,7 +3131,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -3135,8 +3141,8 @@ export type Database = {
           view_only: boolean
         }
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3156,13 +3162,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3174,8 +3180,8 @@ export type Database = {
           message_id: string
         }[]
         SetofOptions: {
-          from: '*'
-          to: 'message_mentions'
+          from: "*"
+          to: "message_mentions"
           isOneToOne: false
           isSetofReturn: true
         }
@@ -3190,7 +3196,7 @@ export type Database = {
           id: string
           is_active: boolean
           is_locked: boolean
-          kind: Database['public']['Enums']['room_kind']
+          kind: Database["public"]["Enums"]["room_kind"]
           members_can_invite: boolean
           name: string
           pinned_message_id: string | null
@@ -3200,8 +3206,8 @@ export type Database = {
           view_only: boolean
         }
         SetofOptions: {
-          from: '*'
-          to: 'rooms'
+          from: "*"
+          to: "rooms"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3223,8 +3229,8 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_member_strikes'
+          from: "*"
+          to: "room_member_strikes"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3264,8 +3270,8 @@ export type Database = {
           username: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'profiles'
+          from: "*"
+          to: "profiles"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3281,13 +3287,13 @@ export type Database = {
           last_seen_at: string | null
           muted_until: string | null
           nickname: string | null
-          role: Database['public']['Enums']['member_role']
+          role: Database["public"]["Enums"]["member_role"]
           room_id: string
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'room_members'
+          from: "*"
+          to: "room_members"
           isOneToOne: true
           isSetofReturn: false
         }
@@ -3302,29 +3308,29 @@ export type Database = {
           user_id: string
         }
         SetofOptions: {
-          from: '*'
-          to: 'poll_votes'
+          from: "*"
+          to: "poll_votes"
           isOneToOne: true
           isSetofReturn: false
         }
       }
     }
     Enums: {
-      member_role: 'owner' | 'admin' | 'moderator' | 'member'
-      message_kind: 'text' | 'system' | 'media' | 'reply' | 'sticker'
+      member_role: "owner" | "admin" | "moderator" | "member"
+      message_kind: "text" | "system" | "media" | "reply" | "sticker"
       moderation_action_kind:
-        | 'warn'
-        | 'mute'
-        | 'kick'
-        | 'ban'
-        | 'unban'
-        | 'delete_message'
-        | 'lock_room'
-        | 'unlock_room'
-        | 'strike'
-      relationship_kind: 'follow' | 'block'
-      report_status: 'open' | 'reviewing' | 'resolved' | 'dismissed'
-      room_kind: 'public' | 'private' | 'group'
+        | "warn"
+        | "mute"
+        | "kick"
+        | "ban"
+        | "unban"
+        | "delete_message"
+        | "lock_room"
+        | "unlock_room"
+        | "strike"
+      relationship_kind: "follow" | "block"
+      report_status: "open" | "reviewing" | "resolved" | "dismissed"
+      room_kind: "public" | "private" | "group"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -3332,31 +3338,33 @@ export type Database = {
   }
 }
 
-type DatabaseWithoutInternals = Omit<Database, '__InternalSupabase'>
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
 
-type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, 'public'>]
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
-    | keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Views'])
-    : never = never,
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'] &
-      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Views'])[TableName] extends {
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R
     }
     ? R
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema['Tables'] & DefaultSchema['Views'])
-    ? (DefaultSchema['Tables'] & DefaultSchema['Views'])[DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
         Row: infer R
       }
       ? R
@@ -3365,23 +3373,23 @@ export type Tables<
 
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Insert: infer I
       }
       ? I
@@ -3390,23 +3398,23 @@ export type TablesInsert<
 
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
-    | keyof DefaultSchema['Tables']
+    | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions['schema']]['Tables'][TableName] extends {
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
     : never
-  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema['Tables']
-    ? DefaultSchema['Tables'][DefaultSchemaTableNameOrOptions] extends {
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
         Update: infer U
       }
       ? U
@@ -3415,57 +3423,57 @@ export type TablesUpdate<
 
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema['Enums']
+    | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
-    : never = never,
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
-    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema['CompositeTypes']
+    | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
-    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
-    : never = never,
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
-  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
-    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
 
 export const Constants = {
   public: {
     Enums: {
-      member_role: ['owner', 'admin', 'moderator', 'member'],
-      message_kind: ['text', 'system', 'media', 'reply', 'sticker'],
+      member_role: ["owner", "admin", "moderator", "member"],
+      message_kind: ["text", "system", "media", "reply", "sticker"],
       moderation_action_kind: [
-        'warn',
-        'mute',
-        'kick',
-        'ban',
-        'unban',
-        'delete_message',
-        'lock_room',
-        'unlock_room',
-        'strike',
+        "warn",
+        "mute",
+        "kick",
+        "ban",
+        "unban",
+        "delete_message",
+        "lock_room",
+        "unlock_room",
+        "strike",
       ],
-      relationship_kind: ['follow', 'block'],
-      report_status: ['open', 'reviewing', 'resolved', 'dismissed'],
-      room_kind: ['public', 'private', 'group'],
+      relationship_kind: ["follow", "block"],
+      report_status: ["open", "reviewing", "resolved", "dismissed"],
+      room_kind: ["public", "private", "group"],
     },
   },
 } as const

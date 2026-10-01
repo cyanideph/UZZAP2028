@@ -17,7 +17,12 @@ export const queryKeys = {
     detail: (userId: string) => ['profiles', userId] as const,
     search: (query: string) => ['profiles', 'search', query] as const,
   },
+  profile: {
+    all: ['profiles'] as const,
+    detail: (userId: string | null) => ['profiles', userId] as const,
+  },
   social: {
+    all: ['social'] as const,
     followers: (userId: string) => ['social', userId, 'followers'] as const,
     following: (userId: string) => ['social', userId, 'following'] as const,
     blocked: (userId: string) => ['social', userId, 'blocked'] as const,
@@ -30,5 +35,9 @@ export const queryKeys = {
   content: {
     all: ['content'] as const,
     detail: (contentId: string) => ['content', contentId] as const,
+  },
+  tasks: {
+    all: ['tasks'] as const,
+    list: (userId: string | null, filter: unknown) => ['tasks', userId, filter] as const,
   },
 } as const

@@ -50,6 +50,8 @@ const scanRoots = [
   path.join(root, 'src'),
   path.join(root, 'assets'),
   path.join(root, 'scripts'),
+  path.join(root, 'supabase'),
+  path.join(root, 'docs'),
 ]
 
 const legacyPattern = /seaguntech|seagun\s*tech|seagun/gi
@@ -89,6 +91,26 @@ function scanDirectory(dir) {
 }
 
 for (const dir of scanRoots) scanDirectory(dir)
+
+const legacyFiles = []
+
+function collectAllFiles(dir) {
+  if (!fs.existsSync(dir)) return
+  const stack = [dir]
+  while (stack.length) {
+    const current = stack.pop()
+    const stat = fs.statSync(current)
+    if (stat.isDirectory()) {
+      for (const entry of fs.readdirSync(current)) {
+        if (!['node_modules', '.git', 'build', '.expo'].includes(entry)) stack.push(path.join(current, entry))
+      }
+    } else {
+      legacyFiles.push(current)
+    }
+  }
+}
+
+for (const dir of [path.join(root, 'src'), path.join(root, 'assets'), path.join(root, 'scripts'), path.join(root, 'supabase'), path.join(root, 'docs')]) collectAllFiles(dir)
 
 const splashFiles = []
 function collectSplashFiles(dir) {

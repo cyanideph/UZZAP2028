@@ -2,7 +2,6 @@ import { cn } from '@/lib/utils'
 import { Pressable, Text, View } from '@/tw'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Linking } from 'react-native'
 import { SettingsSection } from './settings-section'
 
 interface AssistanceSectionProps {
@@ -21,8 +20,6 @@ export function AssistanceSection({
   const handleContactSupport = () => {
     if (onContactSupport) {
       onContactSupport()
-    } else {
-      Linking.openURL('mailto:support@uzzap.com')
     }
   }
 
@@ -39,7 +36,7 @@ export function AssistanceSection({
         <AssistanceRow
           icon="📖"
           label="Documentation"
-          onPress={() => Linking.openURL('https://docs.uzzap.com')}
+          onPress={() => {}}
         />
         <AssistanceRow
           icon="💬"

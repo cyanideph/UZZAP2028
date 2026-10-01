@@ -9,7 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     slug: 'uzzap2028',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './assets/icons/app-icon.png',
+    icon: './assets/icons/uzzap-icon.png',
     scheme: 'uzzap2028',
     userInterfaceStyle: 'automatic',
     newArchEnabled: true,
@@ -20,7 +20,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       adaptiveIcon: {
         backgroundColor: '#E6F4FE',
-        foregroundImage: './assets/icons/app-icon.png',
+        foregroundImage: './assets/icons/uzzap-icon.png',
       },
       edgeToEdgeEnabled: true,
       package: 'com.cyanideph.uzzap2028',
@@ -34,10 +34,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-splash-screen',
         {
-          image: './assets/icons/app-icon.png',
+          image: './assets/icons/uzzap-icon.png',
           backgroundColor: '#FFFFFF',
           resizeMode: 'contain',
           dark: {
+            image: './assets/icons/uzzap-icon.png',
             backgroundColor: '#111111',
           },
         },

@@ -10,11 +10,7 @@ export const queryKeys = {
   conversations: {
     all: ['conversations'] as const,
     detail: (conversationId: string) => ['conversations', conversationId] as const,
-    messages: (conversationId: string) => [
-      'conversations',
-      conversationId,
-      'messages',
-    ] as const,
+    messages: (conversationId: string) => ['conversations', conversationId, 'messages'] as const,
   },
   profiles: {
     all: ['profiles'] as const,
@@ -42,10 +38,6 @@ export const queryKeys = {
   },
   tasks: {
     all: ['tasks'] as const,
-    list: (userId: string | null, filter: unknown) => [
-      'tasks',
-      userId,
-      filter,
-    ] as const,
+    list: (userId: string | null, filter: unknown) => ['tasks', userId, filter] as const,
   },
 } as const

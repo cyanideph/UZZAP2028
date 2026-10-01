@@ -1,24 +1,13 @@
 appId: com.cyanideph.uzzap2028
-name: Complete Onboarding Flow
+name: Current App Post-Auth Verification
 tags:
   - onboarding
   - setup
 
 ---
+# The current UZZAP2028 app does not expose the old Seaguntech
+# onboarding flow. Keep this subflow as a post-auth readiness check.
 - extendedWaitUntil:
-    visible: 'Welcome to Seaguntech'
-    timeout: 10000
-
-- tapOn: 'Next'
-
-- extendedWaitUntil:
-    visible: 'Enable Notifications'
-    timeout: 5000
-
-- tapOn: 'Next'
-
-- extendedWaitUntil:
-    visible: "You're All Set!"
-    timeout: 5000
-
-- tapOn: 'Get Started'
+    visible: 'Discover'
+    timeout: 15000
+- assertVisible: 'Discover'

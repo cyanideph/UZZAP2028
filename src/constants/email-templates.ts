@@ -1,7 +1,7 @@
 export const EMAIL_TEMPLATES = {
   WELCOME: {
     id: 'welcome',
-    subject: 'Welcome to Seaguntech!',
+    subject: 'Welcome to UZZAP!',
     description: 'Sent when a new user signs up',
   },
   PASSWORD_RESET: {
@@ -51,7 +51,7 @@ export const EMAIL_TEMPLATES = {
   },
   INVITE: {
     id: 'invite',
-    subject: "You've Been Invited to Seaguntech",
+    subject: "You've Been Invited to UZZAP",
     description: 'Sent when user is invited by another user',
   },
 } as const
@@ -73,10 +73,7 @@ export const EMAIL_PLACEHOLDERS = {
 } as const
 
 export const EMAIL_CONFIG = {
-  fromName: 'Seaguntech',
-  fromEmail: 'noreply@seaguntech.com',
-  replyTo: 'support@seaguntech.com',
-  supportEmail: 'support@seaguntech.com',
+  fromName: 'UZZAP',
 } as const
 
 export type EmailTemplateId = keyof typeof EMAIL_TEMPLATES

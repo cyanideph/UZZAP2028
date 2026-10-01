@@ -30,7 +30,7 @@ export function SubscriptionManagement() {
       <CardContent>
         {isPremium ? (
           <View>
-            <Text className="text-gray-600">You have active access to seaguntech Pro.</Text>
+            <Text className="text-gray-600">You have active access to UZZAP Pro.</Text>
             {isOnTrial && (
               <Text className="mt-2 text-blue-600 font-medium">
                 You are currently on a free trial.
@@ -44,7 +44,7 @@ export function SubscriptionManagement() {
           </View>
         ) : (
           <Text className="text-gray-600">
-            Unlock all features with seaguntech Pro. Choose from Monthly, Yearly, or Lifetime plans.
+            Unlock all features with UZZAP Pro. Choose from Monthly, Yearly, or Lifetime plans.
           </Text>
         )}
       </CardContent>

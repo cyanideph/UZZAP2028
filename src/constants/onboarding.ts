@@ -3,7 +3,7 @@ import type { OnboardingStep, OnboardingConfig } from '@/types'
 export const ONBOARDING_STEPS: OnboardingStep[] = [
   {
     id: 'welcome',
-    title: 'Welcome to Seaguntech',
+    title: 'Welcome to UZZAP',
     description:
       'Your all-in-one productivity app with AI-powered features, task management, and premium subscriptions.',
     icon: 'sparkles',

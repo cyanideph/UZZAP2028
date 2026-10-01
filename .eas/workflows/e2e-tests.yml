@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_android_e2e:
-    name: Build Android E2E
+  android_e2e_build:
+    name: Android E2E Build
     type: build
     params:
       platform: android

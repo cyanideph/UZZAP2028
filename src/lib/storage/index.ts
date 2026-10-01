@@ -2,13 +2,13 @@ import { createMMKV } from 'react-native-mmkv'
 
 // Main storage instance for general app data
 export const storage = createMMKV({
-  id: 'seaguntech-app-storage',
+  id: 'uzzap-app-storage',
 })
 
 // Secure storage instance for sensitive data (tokens, credentials)
 export const secureStorage = createMMKV({
-  id: 'seaguntech-secure-storage',
-  encryptionKey: 'seaguntech-encryption-key-v1',
+  id: 'uzzap-secure-storage',
+  encryptionKey: 'uzzap-secure-v1!',
 })
 
 // Storage keys

@@ -1,14 +1,15 @@
 name: Android Build
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+    types: [opened, synchronize, reopened]
 
 concurrency:
-  group: android-build-${{ github.ref }}
+  group: android-build-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -16,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
+      - name: Check out PR code
         uses: actions/checkout@v4
 
       - name: Set up Node
@@ -55,7 +56,7 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: uzzap2028-debug-apk
+          name: uzzap2028-debug-apk-pr-${{ github.event.pull_request.number }}
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7

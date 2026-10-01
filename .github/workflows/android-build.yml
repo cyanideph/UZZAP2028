@@ -10,10 +10,6 @@ concurrency:
   group: android-build-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  EXPO_PUBLIC_SUPABASE_URL: https://mauhdrdnlrvjkekxencu.supabase.co
-  EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_-4CSUm_vj8j470QFGCG57Q_g7dpoVbL
-
 jobs:
   validate:
     name: Android Unit Tests

@@ -90,7 +90,9 @@ export const useAuthCallback = () => {
       const tokenHash = toStringParam(params.token_hash) ?? toStringParam(params.token)
       const verificationType = extractVerificationType(toStringParam(params.type), rawUrl)
       const oauthError = toStringParam(params.error_description) ?? toStringParam(params.error)
-      const e2eBypass = __DEV__ && toStringParam(params.e2e_bypass) === '1'
+      const e2eBypass =
+        (__DEV__ || process.env.APP_ENV === 'e2e') &&
+        toStringParam(params.e2e_bypass) === '1'
 
       if (oauthError) {
         setStatus('error')

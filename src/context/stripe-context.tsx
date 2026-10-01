@@ -91,8 +91,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
           paymentIntentId: data.paymentIntentId,
         }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Failed to create payment intent'
+        const errorMessage = err instanceof Error ? err.message : 'Failed to create payment intent'
         setError(errorMessage)
         throw err
       } finally {
@@ -119,8 +118,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
 
         return { success: true }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Payment failed'
+        const errorMessage = err instanceof Error ? err.message : 'Payment failed'
         setError(errorMessage)
         return { success: false, error: errorMessage }
       } finally {
@@ -148,8 +146,7 @@ function StripeContextProvider({ children }: StripeProviderProps) {
           paymentIntentId: paymentIntent?.id,
         }
       } catch (err) {
-        const errorMessage =
-          err instanceof Error ? err.message : 'Payment confirmation failed'
+        const errorMessage = err instanceof Error ? err.message : 'Payment confirmation failed'
         setError(errorMessage)
         return { success: false, error: errorMessage }
       } finally {

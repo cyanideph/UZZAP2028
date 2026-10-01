@@ -35,7 +35,8 @@
     "circular:check:src": "madge --circular --extensions ts,tsx src",
     "circular:graph": "madge --extensions ts,tsx --image dependency-graph.svg src",
     "build:email-templates": "tsx supabase/scripts/build-email-templates.ts",
-    "format:fix": "prettier --write \"src/app/**/*.{js,jsx,ts,tsx}\" \"src/**/*.{js,jsx,ts,tsx}\" \"__tests__/**/*.{js,jsx,ts,tsx}\""
+    "format:fix": "prettier --write \"src/app/**/*.{js,jsx,ts,tsx}\" \"src/**/*.{js,jsx,ts,tsx}\" \"__tests__/**/*.{js,jsx,ts,tsx}\"",
+    "test:android-startup": "node scripts/android-startup-audit.mjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

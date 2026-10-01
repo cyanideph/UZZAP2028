@@ -83,6 +83,9 @@ jobs:
       - name: Validate Expo configuration
         run: pnpm exec expo config --type public
 
+      - name: Generate native Android project from Expo config
+        run: pnpm exec expo prebuild --platform android --clean --no-install
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 

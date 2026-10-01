@@ -21,27 +21,27 @@ export default function WelcomeScreen() {
           source={require('../../../assets/logo/tran-logo.png')}
           style={{ width: 100, height: 100, alignSelf: 'center' }}
         />
-        <Text className="text-3xl font-bold text-foreground text-center">Seaguntech</Text>
+        <Text className="text-3xl font-bold text-foreground text-center">UZZAP</Text>
         <Text className="text-base text-muted-foreground text-center mt-2">
-          Your all-in-one productivity app
+          Your community, chat and conversations in one place
         </Text>
       </View>
 
       <View className="mb-12">
         <FeatureItem
           icon="🤖"
-          title="AI Assistant"
-          description="Chat with AI to boost your productivity"
+          title="AI Chat"
+          description="Chat, discover communities and connect with people"
         />
         <FeatureItem
           icon="✅"
-          title="Task Management"
-          description="Organize and track your tasks effortlessly"
+          title="Communities"
+          description="Find rooms, conversations and people"
         />
         <FeatureItem
           icon="☁️"
-          title="Cloud Sync"
-          description="Your data synced across all devices"
+          title="Stay Connected"
+          description="Keep your conversations available across your devices"
         />
       </View>
 

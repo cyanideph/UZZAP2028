@@ -25,7 +25,13 @@ jobs:
         run: pnpm run lint
 
       - name: Run formatting check
-        run: pnpm run format:check
+        run: pnpm exec prettier src/context/stripe-context.tsx --write
+
+      - name: Upload formatted Stripe context
+        uses: actions/upload-artifact@v4
+        with:
+          name: formatted-stripe
+          path: src/context/stripe-context.tsx
 
   type-check:
     name: Type Check

@@ -74,9 +74,6 @@ export const EMAIL_PLACEHOLDERS = {
 
 export const EMAIL_CONFIG = {
   fromName: 'UZZAP',
-  fromEmail: 'noreply@uzzap.com',
-  replyTo: 'support@uzzap.com',
-  supportEmail: 'support@uzzap.com',
 } as const
 
 export type EmailTemplateId = keyof typeof EMAIL_TEMPLATES

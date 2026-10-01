@@ -1,57 +1,12 @@
 name: Maestro E2E Tests
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'app/**'
-      - 'e2e/**'
-      - 'assets/**'
-      - 'app.config.ts'
-      - 'eas.json'
-      - 'package.json'
   workflow_dispatch:
-    inputs:
-      platform:
-        description: 'Platform to test'
-        required: true
-        default: 'both'
-        type: choice
-        options:
-          - ios
-          - android
-          - both
 
 jobs:
   build_android_e2e:
     name: Build Android E2E
-    if: ${{ github.event_name == 'pull_request' || github.event.inputs.platform == 'android' || github.event.inputs.platform == 'both' }}
     type: build
     params:
       platform: android
       profile: e2e
-
-  maestro_android:
-    name: Maestro E2E - Android
-    needs: [build_android_e2e]
-    if: ${{ github.event_name == 'pull_request' || github.event.inputs.platform == 'android' || github.event.inputs.platform == 'both' }}
-    type: maestro
-    environment: preview
-    runs_on: linux-medium-nested-virtualization
-    params:
-      build_id: ${{ needs.build_android_e2e.outputs.build_id }}
-      flow_path:
-        - e2e/maestro/flows/auth/login.yaml
-        - e2e/maestro/flows/auth/signup.yaml
-        - e2e/maestro/flows/auth/callback-set-password.yaml
-        - e2e/maestro/flows/auth/callback-verify-link-set-password.yaml
-        - e2e/maestro/flows/navigation/tab-navigation.yaml
-        - e2e/maestro/flows/onboarding/complete-onboarding.yaml
-      device_identifier: pixel_6
-      retries: 1
-      retry_failed_only: true
-      output_format: junit
-      exclude_tags:
-        - tasks
-

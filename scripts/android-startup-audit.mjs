@@ -112,6 +112,15 @@ function collectAllFiles(dir) {
 
 for (const dir of [path.join(root, 'src'), path.join(root, 'assets'), path.join(root, 'scripts'), path.join(root, 'supabase'), path.join(root, 'docs')]) collectAllFiles(dir)
 
+const binaryAssetExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico'])
+for (const file of legacyFiles) {
+  const ext = path.extname(file).toLowerCase()
+  if (binaryAssetExtensions.has(ext) && legacyPattern.test(path.basename(file))) {
+    fail(`legacy branding found in binary asset filename: ${path.relative(root, file)}`)
+    legacyPattern.lastIndex = 0
+  }
+}
+
 const splashFiles = []
 function collectSplashFiles(dir) {
   if (!fs.existsSync(dir)) return

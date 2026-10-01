@@ -22,7 +22,7 @@ export function AssistanceSection({
     if (onContactSupport) {
       onContactSupport()
     } else {
-      Linking.openURL('mailto:support@seaguntech.com')
+      Linking.openURL('mailto:support@uzzap.com')
     }
   }
 
@@ -39,7 +39,7 @@ export function AssistanceSection({
         <AssistanceRow
           icon="📖"
           label="Documentation"
-          onPress={() => Linking.openURL('https://docs.seaguntech.com')}
+          onPress={() => Linking.openURL('https://docs.uzzap.com')}
         />
         <AssistanceRow
           icon="💬"

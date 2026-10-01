@@ -97,6 +97,9 @@
     "e2e": {
       "distribution": "internal",
       "environment": "preview",
+      "env": {
+        "APP_ENV": "e2e"
+      },
       "android": {
         "buildType": "apk"
       },

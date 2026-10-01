@@ -30,34 +30,62 @@ export const STORAGE_KEYS = {
 
 export const mmkvStorage = {
   getString: (key: string): string | undefined => storage.getString(key),
-  setString: (key: string, value: string): void => storage.set(key, value),
+  setString: (key: string, value: string): void => {
+    storage.set(key, value)
+  },
   getNumber: (key: string): number | undefined => storage.getNumber(key),
-  setNumber: (key: string, value: number): void => storage.set(key, value),
+  setNumber: (key: string, value: number): void => {
+    storage.set(key, value)
+  },
   getBoolean: (key: string): boolean | undefined => storage.getBoolean(key),
-  setBoolean: (key: string, value: boolean): void => storage.set(key, value),
+  setBoolean: (key: string, value: boolean): void => {
+    storage.set(key, value)
+  },
   getObject: <T>(key: string): T | null => {
     const value = storage.getString(key)
     if (!value) return null
-    try { return JSON.parse(value) as T } catch { return null }
+    try {
+      return JSON.parse(value) as T
+    } catch {
+      return null
+    }
   },
-  setObject: <T>(key: string, value: T): void => storage.set(key, JSON.stringify(value)),
-  delete: (key: string): void => storage.remove(key),
+  setObject: <T>(key: string, value: T): void => {
+    storage.set(key, JSON.stringify(value))
+  },
+  delete: (key: string): void => {
+    storage.remove(key)
+  },
   contains: (key: string): boolean => storage.contains(key),
-  clearAll: (): void => storage.clearAll(),
+  clearAll: (): void => {
+    storage.clearAll()
+  },
   getAllKeys: (): string[] => storage.getAllKeys(),
 }
 
 export const secureMMKVStorage = {
   getString: (key: string): string | undefined => secureStorage.getString(key),
-  setString: (key: string, value: string): void => secureStorage.set(key, value),
+  setString: (key: string, value: string): void => {
+    secureStorage.set(key, value)
+  },
   getObject: <T>(key: string): T | null => {
     const value = secureStorage.getString(key)
     if (!value) return null
-    try { return JSON.parse(value) as T } catch { return null }
+    try {
+      return JSON.parse(value) as T
+    } catch {
+      return null
+    }
   },
-  setObject: <T>(key: string, value: T): void => secureStorage.set(key, JSON.stringify(value)),
-  delete: (key: string): void => secureStorage.remove(key),
-  clearAll: (): void => secureStorage.clearAll(),
+  setObject: <T>(key: string, value: T): void => {
+    secureStorage.set(key, JSON.stringify(value))
+  },
+  delete: (key: string): void => {
+    secureStorage.remove(key)
+  },
+  clearAll: (): void => {
+    secureStorage.clearAll()
+  },
 }
 
 export type StorageKey = (typeof STORAGE_KEYS)[keyof typeof STORAGE_KEYS]

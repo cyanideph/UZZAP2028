@@ -1,22 +1,17 @@
-# Maestro test suite configuration
-# This file defines test suites for organized test execution
+# Maestro test suites for the current UZZAP2028 app.
 
-# Smoke tests - quick verification
 smoke:
   - flows/auth/login.yaml
   - flows/navigation/tab-navigation.yaml
 
-# Authentication suite
 auth:
   - flows/auth/login.yaml
   - flows/auth/signup.yaml
   - flows/auth/callback-set-password.yaml
   - flows/auth/callback-verify-link-set-password.yaml
 
-# Feature tests
-features:
+features: []
 
-# Full regression suite
 regression:
   - flows/auth/login.yaml
   - flows/auth/signup.yaml
@@ -25,14 +20,12 @@ regression:
   - flows/onboarding/complete-onboarding.yaml
   - flows/navigation/tab-navigation.yaml
 
-# CI/CD suite (runs on pull requests)
 ci:
   - flows/auth/login.yaml
   - flows/auth/callback-set-password.yaml
   - flows/auth/callback-verify-link-set-password.yaml
   - flows/navigation/tab-navigation.yaml
 
-# Production sanity check
 production:
   - flows/auth/login.yaml
   - flows/navigation/tab-navigation.yaml

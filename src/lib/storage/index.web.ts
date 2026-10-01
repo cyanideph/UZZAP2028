@@ -1,11 +1,11 @@
 import { createMMKV } from 'react-native-mmkv'
 
 export const storage = createMMKV({
-  id: 'seaguntech-app-storage',
+  id: 'uzzap-app-storage',
 })
 
 export const secureStorage = createMMKV({
-  id: 'seaguntech-secure-storage',
+  id: 'uzzap-secure-storage',
 })
 
 const isBrowser = typeof window !== 'undefined'
